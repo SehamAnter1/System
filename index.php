@@ -337,166 +337,156 @@ if (isset($_SESSION['clientid'])) {
 
 ?>
 
-  <div class="register-page login-page" id="fpasswordpage" style="display:none">
-    <div class="container">
+    <!-- ======================== start forget Password section  ======================== -->
+
+    <div class="register-page login-page" id="fpasswordpage" style="display:none">
+    <div class="container mt-5 mt-md-0">
       <div class="row justify-content-center">
+        <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post"  id="sforgotpasspage" >
 
-        <div class="col-md-4">
-          <div class="login">
+          <i class="fas fa-times close close_form" id="close"></i>
 
-            <form class="#" action="" method="post" style="text-align:left;width:90%;padding-bottom:153px" id="sforgotpasspage">
+          <h1 style="color:black;margin:27px 0;font-size:30px;text-transform:capitalize;font-weight:bold">Forgot Password</h1>
+          <p class="gray-p">Enter your Email to receive the Authenticator code </p>
+          <div class="err-msg">
 
-              <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
-
-              <h1 style="color:black;margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">Forgot Password</h1>
-              <p>Enter your Email to receive the Authenticator code </p>
-              <div class="err-msg">
-
-              </div>
-
-
-              <div class="form-group">
-                <input type="text" name="email" class="form-control col-md-12" placeholder="Email adress" required="required">
-              </div>
-
-
-              <div class="form-group">
-                <input id="" type="a" class="btn btn-primary" value="confirm" style="text-transform: capitalize;border:none;width:60%;text-align:center !important;text-transform:capitalize;margin:auto !important">
-
-              </div>
-
-
-            </form>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="img" style="background-image:url(<?php echo $images ?>accountpage.png)">
+
+
+          <div class="form-group">
+            <input type="text" name="email" class="form-control col-md-12 pl-3" placeholder="Email adress" required="required">
+          </div>
+
+
+          <div class="form-group text-center mt-4">
+            <input  type="button" class="btn btn-primary"  value="confirm" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
+
+          </div>
+
+
+        </form>
+       
+        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture order-1 order-md-2" style="background-image:url(<?php echo $images ?>accountpage.png)">
+          <div class="img" >
             <div class="d">
-              <h1>hello, back</h1>
-              <p>to keep connected with us please login with your personel info </p>
+            <h1>hello, back</h1>
+              <p>To keep connected with us please login with your personel info </p>
               <a style="cursor:pointer" id="swtichtologin">sign in</a>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-  <div class="register-page login-page" id="registerpage" style="display:none;">
-    <div class="container">
-      <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
+  <!-- ======================== end forget Password section  ======================== -->
 
+  <!-- ======================== start registeration section  ======================== -->
+  <div class="register-page login-page" id="registerpage" style="display:none;">
+    <div class="container mt-5 mt-md-0">
       <div class="row justify-content-center">
-        <div class="col-md-5" style="padding-bottom:90px">
-          <div class="img" style="background-image:url(<?php echo $images ?>g.png);padding-bottom:40px">
+        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture" style="background-image:url(<?php echo $images ?>g.png);">
+          <div class="img" >
             <div class="d">
               <h1>hello, back</h1>
               <p>to keep connected with us please login with your personel info </p>
-              <a style="cursor:pointer" id="swtichtologin">sign in</a> <br><br>
+              <a style="cursor:pointer" id="signToRegister">sign in</a> 
             </div>
           </div>
         </div>
-        <div class="col-md-5">
-          <div class="login">
 
-            <form class="#" action="" method="post" style="text-align:center;width:90%" id="registerform">
-
-
-              <h1 style="color:black;margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">create account</h1>
-              <div class="err-msg">
-
-              </div>
+          <form class="# py-5 px-4 col-lg-5 col-md-6 col-11 px-0 form_right" action="" method="post" style="text-align:center;width:90%" id="registerform" >
+            <i class="fas fa-times close close_form" id="close" ></i>
 
 
-              <div class="form-group bt-mg">
-                <input id="ffname" type="tewt" name="fname" class="form-control col-md-12" placeholder="name " autocomplete="new-password" required="required">
-              </div>
-              <div class="form-group">
-                <input id="femail" type="text" name="email" class="form-control col-md-12" placeholder="Email adress" required="required">
-              </div>
-              <div class="form-group bt-mg" style="margin-bottom:20px">
-                <input id="ffphone" type="text" name="phone" class="form-control col-md-12" placeholder="phone " autocomplete="new-password" required="required">
-              </div>
+            <h1 style="color:black);margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">create  account</h1>
+            <div class="err-msg"></div>
+            <div class="form-group bt-mg">
+              <input id="ffname" type="tewt" name="fname" class="form-control col-md-12 pl-3" placeholder="name " autocomplete="new-password" required="required">
+            </div>
+            <div class="form-group">
+              <input id="femail" type="text" name="email" class="form-control col-md-12 pl-3" placeholder="Email adress" required="required">
+            </div>
+            <div class="form-group bt-mg" style="margin-bottom:20px">
+              <input id="ffphone" type="text" name="phone" class="form-control col-md-12 pl-3" placeholder="phone " autocomplete="new-password" required="required">
+            </div>
 
-              <input type="hidden" name="comref" class="form-control col-md-12" value="<?php echo $ref ?>" autocomplete="new-password" required="required">
-
-
-              <div class="form-group">
-                <input onclick="validateform()" id="registerbtn" type="a" class="btn btn-primary" value="register" style="text-transform: capitalize;border:none;width:60%;text-align:center !important;text-transform:capitalize;margin:auto !important">
-
-              </div>
+            <input type="hidden" name="comref" class="form-control col-md-12" value="<?php echo $ref ?>" autocomplete="new-password" required="required">
 
 
-            </form>
-          </div>
-        </div>
+            <div class="form-group">
+              <input onclick="validateform()" id="registerbtn" type="button" class="btn btn-primary"  value="register" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
+            </div>
+          </form>
+      
 
       </div>
     </div>
   </div>
-  <div class="login-page" id="signinpage" style="display:none;">
-    <div class="container">
+  <!-- ======================== end registeration page  ======================== -->
+  <!-- ======================== start signin page  ======================== -->
+  <div class="login-page  " id="signinpage" style="display:none;">
+    <div class="container mt-5 mt-md-0">
       <div class="row justify-content-center">
-        <div class="col-md-5">
-          <div class="login" style="border-radius:5px 0px 0px 5px !important">
+              <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post" style="text-align:center;" id="loginform" >
+                <i class="fas fa-times close close_form" id="close" ></i>
 
-            <form class="#" action="" method="post" style="text-align:center;" id="loginform">
-              <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
-
-              <h1 style="color:black;font-weight: bold;text-transform: capitalize;margin:40px 0">sign in</h1>
-              <div class="form-group">
+                <h1 style="color:black;font-weight: bold;text-transform: capitalize;margin:40px 0">sign in</h1>
+                <div class="form-group">
                 <div class="err-msg">
 
                 </div>
-              </div>
+                </div>
 
-              <div class="form-group">
-                <input type="text" name="email" class="form-control col-md-12" placeholder="Email adress" required="required">
-              </div>
-              <div class="form-group bt-mg">
-                <input type="password" name="password" class="form-control col-md-12" placeholder="Authenticator code " autocomplete="new-password" required="required">
-              </div>
-              <div class="new-acc" style="margin-bottom:10px">
+                <div class="form-group">
+                <input type="text" name="email" class="form-control col-md-12 pl-3" placeholder="Email adress" required="required">
+                </div>
+                <div class="form-group bt-mg">
+                <input type="password" name="password" class="form-control col-md-12 pl-3" placeholder="Authenticator code " autocomplete="new-password" required="required">
+                </div>
+                <div class="new-acc" style="margin-bottom:10px">
                 <a id="forget-p" class="new-acc" style="cursor: pointer;color:rgba(0,0,0,.6);text-transform:capitalize;font-size:14px">forget your password</a>
-              </div>
-              <div class="form-group">
-                <input type="a" class="btn btn-primary" id="login_botton" value="sign in" style="text-transform: capitalize;border:none;width:60%;text-align:center !important;text-transform:capitalize;margin:auto !important">
+                </div>
+                <div class="form-group">
+                <input type="button" class="btn btn-primary"  id="login_botton" value="sign in" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
 
-              </div>
-              <?php
-              if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-                $password = sha1($_POST['password']);
+                </div>
+                <?php
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+                    {
+                    $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+                    $password = sha1($_POST['password']);
 
-                $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1 ");
-                $stmt->execute(array($email, $password));
-                $clientExist = $stmt->rowCount();
-                $client = $stmt->fetch();
-                if ($clientExist > 0) {
-                  $_SESSION['client'] = $client['username'];
-                  $_SESSION['clientid'] = $client['id'];
-                  $_SESSION['email'] = $client['email'];
+                    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1 ");
+                    $stmt->execute(array($email,$password));
+                    $clientExist = $stmt->rowCount();
+                    $client = $stmt->fetch();
+                    if ($clientExist > 0)
+                    {
+                    $_SESSION['client'] = $client['username'];
+                    $_SESSION['clientid'] = $client['id'];
+                    $_SESSION['email'] = $client['email'];
 
 
-                  header('location: index.php');
-                } else {
-              ?>
-                  <div class="alert alert-danger">
+                    header('location: index.php');
+                    }else {
+                    ?>
+                    <div class="alert alert-danger">
                     Email or password are wrong
-                  </div>
-              <?php
+                    </div>
+                <?php
                 }
-              }
-              ?>
+
+                }
+                ?>
 
             </form>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="img" style="border-radius: 0px 5px 5px 0px !important; background-image:url(<?php echo $images ?>accountpage.png)">
+          
+        
+        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture order-1 order-md-2 " style="background-image:url(<?php echo $images ?>accountpage.png)">
+          <div class="img"  >
             <div class="d">
               <h1>hello friend</h1>
-              <p>enter your personel details and start journey with us</p>
+              <p>Enter your personel details and start journey with us</p>
               <a id="swtichtoregiter">register</a>
             </div>
           </div>
@@ -504,12 +494,14 @@ if (isset($_SESSION['clientid'])) {
       </div>
     </div>
   </div>
+  <!-- ======================== end signin page  ======================== -->
+    <!-- ============================ home page without login ======================== -->
   <section class="homepage home__page" id="homepage" style="background-image: url(<?php echo $images ?>bg.png);background-size:cover;object-fit:cover;padding-bottom:180px">
     <div class="container-fluid ">
       <div class="row">
         <div class="col-md-12">
           <div class="tbbar navigation__bar" style="margin-top:40px">
-            <nav class="navbar navbar-expand-md px-sm-5" style="z-index: 99999;">
+            <nav class="navbar navbar-expand-md px-sm-5" style="z-index: 800;">
               <a class="navbar-brand" href="index.php">
                 <img src="<?php echo $logo . $page['logo'] ?>" style="width:200px" alt="">
               </a>
