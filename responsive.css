@@ -1,0 +1,76 @@
+@media (min-width: 601px) and (max-width: 922px) {
+    .footer .content ul {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* small screen */
+@media screen and (max-width: 767.5px) {
+    /* login,registeration, and forget password forms */
+    .login-page form {
+        border-top-left-radius: 0;
+    }
+    .login-page form .close_form {
+        right: 30px;
+        left: unset;
+    }
+    .login-page .form_picture {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .login-page .form_right {
+        border-radius: 0 0 10px 10px !important;
+        -webkit-border-radius: 0 0 10px 10px !important;
+        -moz-border-radius: 0 0 10px 10px !important;
+        -ms-border-radius: 0 0 10px 10px !important;
+        -o-border-radius: 0 0 10px 10px !important;
+    }
+    .login-page .img {
+        width: 100%;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+    .login-page .img .d {
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+    .login-page .img h1 {
+        font-size: 2em;
+    }
+    .login-page .img p {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+    .login-page .img a {
+        padding: 7px 33px;
+        font-size: 22px;
+        letter-spacing: 2px;
+        line-height: normal;
+    }
+    .login-page .d {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 15px;
+    }
+    .journey {
+        background-position: center;
+    }
+}
+/* end small screen */
+/* extera small screen */
+@media (min-width: 400px) and (max-width: 600px) {
+    .footer .content ul {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* end extera small screen */
