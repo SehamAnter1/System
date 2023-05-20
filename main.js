@@ -1,223 +1,630 @@
-$(document).ready(function(){
+$(document).ready(function () {
+    $(document).on("click", ".cppoints", function () {
+        var cp = $(this).attr("cp");
+        var userid = $(this).attr("userid");
 
+        $.ajax({
+            url: "check_user4.php",
+            method: "POST",
+            data: { userid: userid, cp: cp },
+            success: function (data) {
+                $(".msgwindow").html(data);
+                setTimeout(function () {
+                    getpoints4(cp);
+                }, 10000);
+            },
+        });
+    });
 
+    $(document).on("click", "#off3", function () {
+        $("#mpr3").prop("disabled", true);
+    });
 
-          $('#job-a-btn-option').click(function(){
-            $.ajax({
-              url: 'insert_job.php',
-              method : 'POST',
-              data:  $('#job-form-info').serialize(),
-              success: function(data)
-              {
-                $('.err-msg').html(data);
-              }
-            });
+    $(document).on("click", "#on3", function () {
+        $("#mpr3").prop("disabled", true);
+    });
 
-            });
+    $(document).on("click", "#off4", function () {
+        $("#mpr4").prop("disabled", true);
+    });
 
+    $(document).on("click", "#on4", function () {
+        $("#mpr4").prop("disabled", true);
+    });
 
-  $('#alr').click(function(){
-    alert('?هل انت متاكد من انك قمت بارسال المنتج ');
-  })
+    $("#off").click(function () {
+        $("#mpr").prop("disabled", true);
+    });
+    $("#on").click(function () {
+        $("#mpr").prop("disabled", false);
+    });
+    $("#off").click(function () {
+        $("#mpr").prop("disabled", true);
+    });
+    $("#on").click(function () {
+        $("#mpr").prop("disabled", false);
+    });
 
+    $("#off2").click(function () {
+        $("#mpr2").prop("disabled", true);
+    });
+    $("#on2").click(function () {
+        $("#mpr2").prop("disabled", false);
+    });
 
-$('.up-ava').change(function(){
+    $(".prpmmf").click(function () {
+        var l = $(this).attr("level");
+        $.ajax({
+            url: "fetch_subs.php",
+            method: "POST",
+            data: { l: l },
+            success: function (data) {
+                $("#lfdf6df5").html(data);
+            },
+        });
+    });
+    $(".up-ava").change(function () {
+        $("#sb-bt").css("visibility", "visible");
+    });
+    $("#registerbtn").click(function () {
+        $.ajax({
+            url: "insert_user.php",
+            method: "POST",
+            data: $("#registerform").serialize(),
+            success: function (data) {
+                $("#registerform").html(data);
+            },
+        });
+    });
 
-  $('#sb-bt').css('visibility', 'visible');
-});
+    $(".close").click(function () {
+        $("#contactpage").css("display", "none");
+        $("#signinpage").css("display", "none");
+        $("#registerpage").css("display", "none");
+        $("#faqpage").css("display", "none");
+        $("#fpasswordpage").css("display", "none");
+        $("#contactpages").css("display", "none");
+        $("#mappage").css("display", "none");
+        $(".guidepage").css("display", "none");
 
+        $("#tmpage").css("display", "none");
+    });
 
+    $("#forget-p").click(function () {
+        $("#fpasswordpage").css("display", "block");
+        $("#signinpage").css("display", "none");
+    });
+    $(document).on("click", ".winner", function () {
+        var userid = $(this).attr("userid");
+        var comp = $(this).attr("comp");
+        var place = $(this).attr("place");
 
+        $.ajax({
+            url: "winner.php",
+            method: "POST",
+            data: { userid: userid, comp: comp, place: place },
+            success: function (data) {
+                $(".winner").html(data);
+            },
+        });
+    });
+    $(document).on("click", ".qrcodecheck", function () {
+        $.ajax({
+            url: "qrcode_check.php",
+            method: "POST",
+            data: $("#registerform").serialize(),
+            success: function (data) {
+                if (data > 0) {
+                    // window.location.href = "index.php";//<- your url here
+                    location.reload();
+                } else {
+                    $(".qrcodeerr").html(data);
+                }
+            },
+        });
+    });
 
-    $('#open-add-page').click(function(){
-      $('#add-page').show();
-    })
+    $(document).on("click", ".getrewardpoints", function () {
+        var points = $(this).attr("points");
 
-        $('#close').click(function(){
-          $('#add-page').css('display', 'none');
-        })
+        var ad = $(this).attr("ad");
+        $.ajax({
+            url: "insert_reward.php",
+            method: "POST",
+            data: { ad: ad, points: points },
+            success: function (data) {
+                $(this).html(data);
+            },
+        });
+    });
 
+    // function when click on question will show the answer of this question
+    $(".acc h3").click(function () {
+        $(this).next(".content-faq").slideToggle();
+        $(this).parent().toggleClass("active");
+        $(this).parent().siblings().children(".content-faq").slideUp();
+        $(this).parent().siblings().removeClass("active");
+    });
+    // Mariam
+    // setTimeout(function () {
+    //     move();
+    // }, 3000);
 
+    $("#contactpage-btn").click(function () {
+        $("#contactpage").css("display", "block");
+    });
 
+    $("#contact-btn").click(function () {
+        $.ajax({
+            url: "contactus.php",
+            method: "POST",
+            data: $("#contact-from").serialize(),
+            success: function (data) {
+                $(".err-msg2").html(data);
+            },
+        });
+    });
 
+    $("#login_botton").click(function () {
+        $.ajax({
+            url: "login.php",
+            method: "POST",
+            data: $("#loginform").serialize(),
+            success: function (data) {
+                if (data > 0) {
+                    // window.location.href = "index.php";//<- your url here
+                    location.reload();
+                } else {
+                    $(".err-msg").html(data);
+                }
+            },
+        });
+    });
+    $("#map").click(function () {
+        $("#mappage").css("display", "block");
+    });
+    $("#contactpage-btn").click(function () {
+        $("#contactpages").css("display", "block");
+    });
+    $("#guide").click(function () {
+        $("#guidepage").css("display", "block");
+    });
 
+    $("#tm").click(function () {
+        $("#tmpage").css("display", "block");
+    });
 
+    $("#faqpage-btn").click(function () {
+        $("#faqpage").css("display", "block");
+    });
 
+    $("#mppf93f").click(function () {
+        $("#registerpage").css("display", "block");
+    });
 
+    $("#swtichtoregiter").click(function () {
+        $("#signinpage").css("display", "none");
+        $("#registerpage").css("display", "block");
+    });
 
-// ajax
-$('#a-btn-option').click(function(){
+    $("#swtichtologin").click(function () {
+        $("#signinpage").css("display", "block");
+        $("#spage").css("display", "none");
+    });
+    $("#signToRegister").click(function () {
+        $("#signinpage").css("display", "block");
+        $("#registerpage").css("display", "none");
+    });
 
+    $("#signin-botton").click(function () {
+        $("#signinpage").css("display", "flex");
+    });
+    $("#Regsiter-botton").click(function () {
+        $("#registerpage").css("display", "block");
+    });
+    // setInterval(function()
+    // {
+    //
+    //   emptycontent();
+    //
+    //
+    // },9000);
+    $(document).on("click", ".boxone", function () {
+        var nb = $(this).val();
+    });
 
-  $.ajax({
-    url: 'insert_user.php',
-    method : 'POST',
-    data:  $('#form-info').serialize(),
-    success: function(data)
-    {
-      $('.err-msg').html(data);
+    //
+    $(document).on("click", ".freepoints", function () {
+        $.ajax({
+            url: "fetch_freepoints.php",
+            method: "POST",
+            success: function (data) {
+                $(".freepoints-tt").html(data);
+            },
+        });
+    });
+
+    $(document).on("click", ".mdpfe", function () {
+        $(".msgwindow").empty();
+        var service = $(this).attr("service");
+        var servicetype = $(this).attr("servicetype");
+        $.ajax({
+            url: "fetchmyads.php",
+            method: "POST",
+            data: { service: service, servicetype: servicetype },
+            success: function (data) {
+                $(".mpz665r32ds").html(data);
+            },
+        });
+    });
+
+    $(document).on("click", ".visible_update", function () {
+        var ad = $(this).attr("ad");
+        var status = $(this).attr("status");
+        $.ajax({
+            url: "visibility.php",
+            method: "POST",
+            data: { ad: ad, status: status },
+            success: function (data) {
+                alert("ad status updated");
+            },
+        });
+    });
+
+    $(document).on("click", ".ad-delete", function () {
+        var ad = $(this).attr("ad");
+        $.ajax({
+            url: "delete_ad.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                alert("this item has been delete, reload ");
+            },
+        });
+    });
+
+    $(document).on("click", "#mbeadbtn99003f3svb2", function () {
+        $.ajax({
+            url: "update_ad.php",
+            method: "POST",
+            data: $("#adform2").serialize(),
+            success: function (data) {
+                $(".msg").html(data);
+            },
+        });
+    });
+
+    $(document).on("click", ".close-ad-edit", function () {
+        $(".content-ad-show").empty();
+    });
+
+    $(document).on("click", ".ad-edit", function () {
+        var ad = $(this).attr("ad");
+        $.ajax({
+            url: "edit_ad.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                $(".content-ad-show").html(data);
+            },
+        });
+    });
+
+    $(document).on("click", ".mpprlotk", function () {
+        var ad = $(this).attr("ad");
+
+        $.ajax({
+            url: "check_user3.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                $(".msgwindow").html(data);
+
+                setTimeout(function () {
+                    getpoints3(ad);
+                }, 10000);
+            },
+        });
+    });
+
+    $(document).on("click", ".srtcount", function () {
+        var ad = $(this).attr("ad");
+
+        $.ajax({
+            url: "check_user.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                $(".msgwindow").html(data);
+
+                setTimeout(function () {
+                    getpoints(ad);
+                }, 20000);
+            },
+        });
+    });
+
+    $(document).on("click", ".srtcount2", function () {
+        var ad = $(this).attr("ad");
+
+        $.ajax({
+            url: "check_user2.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                $(".msgwindow").html(data);
+
+                setTimeout(function () {
+                    getpoints2(ad);
+                }, 10000);
+            },
+        });
+    });
+
+    function getpoints4(cp) {
+        $.ajax({
+            url: "success_points4.php",
+            method: "POST",
+            data: { cp: cp },
+            success: function (data) {
+                $(".msgwindow").html(data);
+            },
+        });
     }
-  });
 
-  });
-  $('#a-btn-option2').click(function(){
+    function getpoints(ad) {
+        $.ajax({
+            url: "success_points.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                $(".msgwindow").html(data);
+            },
+        });
+    }
 
+    function getpoints2(ad) {
+        $.ajax({
+            url: "success_points2.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                $(".msgwindow").html(data);
+            },
+        });
+    }
+
+    function getpoints3(ad) {
+        $.ajax({
+            url: "success_points3.php",
+            method: "POST",
+            data: { ad: ad },
+            success: function (data) {
+                $(".msgwindow").html(data);
+            },
+        });
+    }
+    $(document).on("click", ".adh999bb07es", function () {
+        var id = $(this).attr("prmdk");
+        var points = $(this).attr("pts");
+        var ad = $(this).attr("ad");
+
+        $.ajax({
+            url: "update_hits.php",
+            method: "POST",
+            data: { id: id, points: points, ad: ad },
+            success: function (data) {},
+        });
+    });
+
+    $(document).on("click", ".skip0997", function () {
+        var service = $(this).attr("service");
+        var servicetype = $(this).attr("servicetype");
+        $.ajax({
+            url: "fetchmyads.php",
+            method: "POST",
+            data: { service: service, servicetype: servicetype },
+            success: function (data) {
+                $(".mpz665r32ds").html(data);
+                newad(service, servicetype);
+            },
+        });
+    });
+    function newad(service, servicetype) {
+        $.ajax({
+            url: "fetchmyads.php",
+            method: "POST",
+            data: { service: service, servicetype: servicetype },
+            success: function (data) {
+                $(".mpz665r32ds").html(data);
+            },
+        });
+    }
+
+    $(document).on("click", ".mpr", function () {
+        var service = $(this).attr("service");
+        var servicetype = $(this).attr("servicetype");
+        $.ajax({
+            url: "fetchmyads.php",
+            method: "POST",
+            data: { service: service, servicetype: servicetype },
+            success: function (data) {
+                $(".mpz665r32ds").html(data);
+            },
+        });
+    });
+
+    $("#mbeadbtn99003f3svb").click(function () {
+        $.ajax({
+            url: "insert_ad.php",
+            method: "POST",
+            data: $("#adform").serialize(),
+            success: function (data) {
+                $(".msg").html(data);
+            },
+        });
+    });
+
+    $("#service").change(function () {
+        var id = $("#service").val();
+        $.ajax({
+            url: "fetch_servicestype.php",
+            method: "POST",
+            data: { id: id },
+            success: function (data) {
+                $("#servicetype").html(data);
+            },
+        });
+    });
+
+    $("#a-btn-option").click(function () {
+        $.ajax({
+            url: "insert_user.php",
+            method: "POST",
+            data: $("#form-info").serialize(),
+            success: function (data) {
+                $(".err-msg").html(data);
+            },
+        });
+    });
+
+    // $('.boxone').click(function(){
+    //   var user=   $(this).attr('user');
+    //   var box = $(this).attr('box');
+    //   var points = $(this).attr('points');
+    //
+    //   $.ajax({
+    //     url: 'insert_reward.php',
+    //     method : 'POST',
+    //     data:  {user:user,box:box,points:points},
+    //     success: function(data)
+    //     {
+    //       $('.boxone').html(data);
+    //     }
+    //   });
+    //
+    //
+    //
+    //   })
+
+    $(".webhists").click(function () {
+        $(".webhits").css("display", "block");
+        $(".9re8dbb00er").css("display", "none");
+        $(".mpds098fb").css("display", "none");
+        $(".freepoints-tt").css("display", "none");
+    });
+    $(".freepoints").click(function () {
+        $(".webhits").css("display", "none");
+        $(".9re8dbb00er").css("display", "none");
+        $(".mpds098fb").css("display", "none");
+        $(".freepoints-tt").css("display", "block");
+    });
+
+    $(".socialhits").click(function () {
+        $(".webhits").css("display", "none");
+        $(".9re8dbb00er").css("display", "block");
+        $(".mpds098fb").css("display", "block");
+        $(".freepoints-tt").css("display", "none");
+    });
+
+    $(".service-btfd").click(function () {
+        var id = $(this).attr("service");
+        $.ajax({
+            url: "fetch_ads.php",
+            method: "POST",
+            data: { id: id },
+            success: function (data) {
+                $(".mpz665r32ds").html(data);
+            },
+        });
+    });
+
+    $(".dashboard-overview").click(function () {});
+
+    // empty js file
+});
+var counterVal2 = 0;
+
+function incrementClick2() {
+    updateDisplay2(++counterVal2);
+
+    var clicks = $(".boxtwo").attr("totalclicks", counterVal2);
+    var bclick = $(".boxtwo").attr("basicclicks");
+    var user = $(".boxtwo").attr("user");
+    var box = $(".boxtwo").attr("box");
+    var points = $(".boxtwo").attr("points");
+    if (counterVal2 == bclick) {
+        $.ajax({
+            url: "insert_reward.php",
+            method: "POST",
+            data: { user: user, box: box, points: points },
+            success: function (data) {
+                $(".boxtwo").html(data);
+            },
+        });
+    }
+}
+
+function updateDisplay2(val2) {
+    document.getElementById("counter-label2").innerHTML = val2;
+}
+
+/////////////////////////////////////
+var counterVal = 0;
+
+function incrementClick() {
+    updateDisplay(++counterVal);
+
+    var clicks = $(".boxone").attr("totalclicks", counterVal);
+    var bclick = $(".boxone").attr("basicclicks");
+    var user = $(".boxone").attr("user");
+    var box = $(".boxone").attr("box");
+    var points = $(".boxone").attr("points");
+    if (counterVal == bclick) {
+        $.ajax({
+            url: "insert_reward.php",
+            method: "POST",
+            data: { user: user, box: box, points: points },
+            success: function (data) {
+                $(".boxone").html(data);
+            },
+        });
+    }
+}
+
+function updateDisplay(val) {
+    document.getElementById("counter-label").innerHTML = val;
+}
+
+var i = 0;
+function move() {
+    if (i == 0) {
+        i = 1;
+        var elem = document.getElementById("myBar");
+        var width = 0;
+        var id = setInterval(frame, 200);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                web();
+                i = 0;
+            } else {
+                width++;
+                elem.style.width = width + "%";
+            }
+        }
+    }
+}
+function web() {
+    var points = $(".barcontent").attr("points");
+    var ad = $(".barcontent").attr("ad");
 
     $.ajax({
-      url: 'insert_player.php',
-      method : 'POST',
-      data:  $('#form-info2').serialize(),
-      success: function(data)
-      {
-        $('.err-msg').html(data);
-      }
+        url: "insert_webhits.php",
+        method: "POST",
+        data: { points: points, ad: ad },
+        success: function (data) {
+            $(".barcontent").html(data);
+        },
     });
-    });
-
-
-
-$('#ca-btn-option').click(function(){
-
-
-  $.ajax({
-    url: 'insert_category.php',
-    method : 'POST',
-    data:  $('#ca-form-info').serialize(),
-    success: function(data)
-    {
-      $('.err-msg').html(data);
-    }
-  });
-
-
-
-});
-
-$("#pro-btn-option").click(function(){
-
-  var formData = new FormData("#pro-form-info");
-    // Check file selected or not
-alert(formData);
-
-       $.ajax({
-          url: 'insert_product.php',
-          type: 'post',
-          data: {formDate:formData},
-          contentType: false,
-          processData: false,
-          success: function(data){
-            $('#err-msg').html(data);
-          }
-       });
-
-});
-
-
-});
-
-
-new Chartist.Line('.ct-chart', {
-  labels: [1, 2, 3, 4, 5, 6, 7, 8],
-  series: [
-    [5, 9, 7, 8, 5, 3, 5, 4]
-  ]
-}, {
-  low: 0,
-  showArea: true
-});
-
-
-function tableone() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("users-search");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("users-table");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-
-
-
-
-function tabletwo() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("categories-search");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("categories-table");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-
-
-
-function tablethree() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("movies-search");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("movies-table");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-
-
-
-function tablefor() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("series-search");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("series-table");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
 }

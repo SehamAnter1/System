@@ -6,6 +6,67 @@
 }
 /* small screen */
 @media screen and (max-width: 767.5px) {
+    /* sidebar */
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 450px;
+        max-width: 98%;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        overflow: initial;
+    }
+    .sidebar a img {
+        width: 20px;
+    }
+    .sidebar a {
+        position: relative;
+    }
+    .sidebar a span {
+        display: none;
+        position: absolute;
+        background: var(--mainColor);
+        top: -46px;
+        left: 16px;
+        z-index: 64;
+        width: 115px;
+        text-align: center;
+        padding: 5px 10px;
+        text-transform: capitalize;
+        z-index: 0;
+    }
+    .sidebar a span::before {
+        content: "";
+        position: absolute;
+        bottom: -19px;
+        left: 0;
+        border-width: 10px;
+        border-style: solid;
+        border-color: var(--mainColor) transparent transparent transparent;
+        z-index: -1;
+    }
+    .sidebar a:hover span {
+        display: block;
+    }
+    .sidebar .logout {
+        font-size: 12px;
+    }
+    /* end sidebar */
+    /* user dashboard */
+    .dash-content {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+    /* end user dashboard */
     /* login,registeration, and forget password forms */
     .login-page form {
         border-top-left-radius: 0;
@@ -66,11 +127,30 @@
     }
 }
 /* end small screen */
-/* extera small screen */
+
 @media (min-width: 400px) and (max-width: 600px) {
     .footer .content ul {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* extera small screen */
+@media screen and (max-width: 420px) {
+    /* sidebar */
+    .sidebar a {
+        padding: 13px 10px;
+    }
+    .sidebar a span {
+        width: 80px;
+    }
+    /* end sidebar */
+}
+@media screen and (max-width: 330px) {
+    .sidebar a img {
+        width: 15px;
+    }
+    .sidebar a {
+        font-size: 8px;
     }
 }
 /* end extera small screen */
