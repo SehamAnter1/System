@@ -69,7 +69,7 @@
 </div>
 <div class="header">
   <div class="container d-flex justify-content-between">
-    <div class="sidebar col-2 ">
+    <div class="sidebar col-2 mr-3 ">
       <a class="active d-flex flex-column justify-content-center align-items-center" href="index.php">
         <img src="<?php echo $images ?>dashboard.png"  alt="">
         <span>dashboard</span>
