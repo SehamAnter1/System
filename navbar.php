@@ -68,8 +68,8 @@
   </div>
 </div>
 <div class="header">
-  <div class="container">
-    <div class="sidebar">
+  <div class="container d-flex justify-content-between">
+    <div class="sidebar col-2 ">
       <a class="active d-flex flex-column justify-content-center align-items-center" href="index.php">
         <img src="<?php echo $images ?>dashboard.png"  alt="">
         <span>dashboard</span>
