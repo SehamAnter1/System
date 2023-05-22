@@ -36,167 +36,139 @@ if (isset($_SESSION['clientid'])) {
 
   </div>
 
+    <!-- start dashboard main contnent -->
+    <div class="dashboard_container col-10" id="dashboard">
+        <div class="row dashboard_header  align-items-center justify-content-between">
+          <div class="content d-flex align-items-center justify-content-center">
+            <div class="icon">
+            <img src="<?php echo $images ?>click.png" alt="">
+            </div>
+            <div class="details">
+                  <p> total hits</p>
 
+                  <span class="nbr"><?php echo $user['hits']; ?></span>
+                </div>
+          </div>
+          <div class="content d-flex align-items-center justify-content-center">
+                <div class="icon users-icon">
+                  <img src="<?php echo $images ?>place.png" alt="">
 
-  <!-- right content model -->
-  <div class="content dash-content">
-    <div class="dashboard lf-pd" id="dashboard">
-      <div class="container">
+                </div>
+                <div class="details">
+                  <a href="webpage.php?page=comp">
+                    <p> your place</p>
+                  </a>
+                  <span class="nbr"><?php echo $me; ?></span>
+                </div>
+          </div>
+          <div class="content d-flex align-items-center justify-content-center">
+                <div class="icon users-icon">
+                  <img src="<?php echo $images ?>ad.png" alt="">
+
+                </div>
+                <div class="details">
+                  <p> click credit</p>
+                  <span class="nbr"><?php echo Total($conn, 'players') ?></span>
+                </div>
+          </div>
+        </div>
+        <!-- start form -->
         <div class="row">
-
-          <div class="col-md-4">
-            <div class="box">
-              <div class="icon money-icon">
-                <img src="<?php echo $images ?>click.png" alt="">
-              </div>
-              <div class="details">
-                <p> total hits</p>
-
-                <span class="nbr"><?php echo $user['hits']; ?></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="box">
-              <div class="icon users-icon">
-                <img src="<?php echo $images ?>place.png" alt="">
-
-              </div>
-              <div class="details">
-                <a href="webpage.php?page=comp">
-                  <p> your place</p>
-                </a>
-                <span class="nbr"><?php echo $me; ?></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="box">
-              <div class="icon users-icon">
-                <img src="<?php echo $images ?>ad.png" alt="">
-
-              </div>
-              <div class="details">
-                <p> click credit</p>
-                <span class="nbr"><?php echo Total($conn, 'players') ?></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="content-header">
+            <div class="col-12 form_header mt-5 mb-4">
               <span class="dashboard-overview">Your submit</span>
             </div>
-          </div>
-          <div class="col-md-12">
-            <form method="post" id="adform">
-              <div class="msg">
+            <div class="col-12">
+                <form method="POST" id="adform">
+                    <div class="msg mb-4"></div>
+                    <div class="row justify-content-center ">
+                        <div class="col-xl-5 col-12">
+                            <div class="form-group d-flex">
+                              <label for="colFormLabelSm" class="text-capitalize col-3 px-0">type</label>
+                              <?php
+                                  $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
+                                  $stmt->execute();
+                                  $services = $stmt->fetchAll();
+                                  ?>
+                                  <select class="form-control col-9" name="service" id="service">
+                                    <?php
+                                    foreach ($services as $service) {
+                                    ?>
+                                      <option value="<?php echo $service['id'] ?>"><?php echo $service['name'] ?></option>
 
-              </div>
-              <div class="row">
-                <div class="col-md-5">
-                  <div class="form-group row">
-                    <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">service</label>
-                    <div class="col-sm-9">
-                      <?php
-                      $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
-                      $stmt->execute();
-                      $services = $stmt->fetchAll();
-                      ?>
-                      <select class="form-control" name="service" id="service">
-                        <?php
-                        foreach ($services as $service) {
-                        ?>
-                          <option value="<?php echo $service['id'] ?>"><?php echo $service['name'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    <option value="99">Free points</option>
 
-                        <?php
-                        }
-                        ?>
-                        <option value="99">Free points</option>
+                                  </select>
+                            </div>
 
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">service type</label>
-                    <div class="col-sm-9">
-                      <?php
-                      $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
-                      $stmt->execute();
-                      $services = $stmt->fetchAll();
-                      ?>
-                      <select class="form-control" name="servicetype" id="servicetype">
-                        <option value="default">select service type first</option>
-
-
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">total click</label>
-                    <div class="col-sm-9">
-                      <div class="input-group">
-                        <input type="text" id="mpr" name="tclicks" class="form-control" placeholder="Total clicks" aria-label="Total clicks" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                          <a id="on" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">on</a>
-                          <a id="off" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">off</a>
+                            <div class="form-group d-flex">
+                              <label for="colFormLabelSm" class="text-capitalize col-3 px-0 ">service type</label>
+                              <?php
+                                  $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
+                                  $stmt->execute();
+                                  $services = $stmt->fetchAll();
+                                  ?>
+                                  <select class="form-control  col-9" name="servicetype" id="servicetype">
+                                    <option value="default">select service type first</option>
+                                  </select>
+                            </div>
+                            <div class="form-group d-flex">
+                                <label for="colFormLabelSm" class="text-capitalize col-3 px-0">total click</label>
+                                <div class="input-group  col-9 px-0">
+                                        <input type="text" id="mpr" name="tclicks" class="form-control" placeholder="Total clicks" aria-label="Total clicks" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                          <a id="on" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">on</a>
+                                          <a id="off" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">off</a>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col-xl-5 col-12 ">
+                              <div class="form-group d-flex">
+                                  <label for="colFormLabelSm" class=" col-3 px-0">points</label>
+                                  <div class="col-9 px-0 ">
+                                    <input type="text" name="points" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Points">
+                                  </div>
+                              </div>
+
+                                <div class="form-group d-flex">
+                                  <label for="colFormLabelSm" class="col-3 px-0">url / account</label>
+                                  <div class=" col-9 px-0" >
+                                    <input type="text" name="uacc" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Your account url">
+                                  </div>
+                                </div>
+                            
+                                <div class="form-group d-flex">
+                                    <label for="colFormLabelSm" class=" col-3 px-0">Daily Clicks</label>
+                                    <div class="input-group col-9 px-0">
+                                        <input type="text" id="mpr2" name="dclicks" class="form-control" placeholder="Daily Clicks" aria-label="Daily Clicks" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                          <a id="on2" class="btn "  type="button">on</a>
+                                          <a id="off2" class="btn "  type="btutton">off</a>
+                                        </div>
+                                    </div>
+                          
+                                </div>
+                        </div>
+                      <div class="submit_container ">
+                            <input type="button" class="btn btn-primary form-submit text-center" id="mbeadbtn99003f3svb" value="submit">
                       </div>
                     </div>
-                  </div>
-
-                </div>
-
-
-                <div class="col-md-5">
-                  <div class="form-group row">
-                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">points</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="points" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Points">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">url / account</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="uacc" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Your account url">
-
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Daily Clicks</label>
-                    <div class="col-sm-10">
-                      <div class="input-group">
-                        <input type="text" id="mpr2" name="dclicks" class="form-control" placeholder="Daily Clicks" aria-label="Daily Clicks" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                          <a id="on2" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="button">on</a>
-                          <a id="off2" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">off</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-
-                  <div class="form-group row">
-                    <div class="col-sm-9 col-xs-12">
-                      <input type="a" class="btn btn-primary" id="mbeadbtn99003f3svb" value="submit">
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-          </div>
-          </form>
+                </form>
+            </div>
         </div>
+        <!-- end form -->
+        <!-- start table -->
         <?php
         $stmt = $conn->prepare("SELECT * FROM ads WHERE userid = ?");
         $stmt->execute(array($_SESSION['clientid']));
         $ads = $stmt->fetchAll();
         ?>
-        <div class="col-md-12">
+         <div class="col-md-12">
           <div class="management-body dash-table">
-            <div class="default-management-table">
+            <div class="default-management-table table-responsive">
               <table class="table" id="users-table">
                 <thead>
                   <tr>
@@ -215,7 +187,7 @@ if (isset($_SESSION['clientid'])) {
                   <?php
                   foreach ($ads as $ad) {
                   ?>
-                    <tr style="background:white;margin:20px 0">
+                    <tr style="background:#F5F5F5;margin:20px 0">
                       <td>
                         <?php echo $ad['id'] ?>
                       </td>
@@ -307,16 +279,15 @@ if (isset($_SESSION['clientid'])) {
 
                   ?>
 
-
-
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-      </div>
+        <!-- end table -->
     </div>
-  </div>
+    <!-- end dashboard main contnent -->
+
   </div>
 
   </div>
