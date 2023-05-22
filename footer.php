@@ -12,7 +12,7 @@
 
       <div class="col-md-8">
         <div class="login" style="position:relative;margin:50px auto;text-align:center">
-          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
+          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:#F5F5F5;"></i>
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black);margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">sitemap</h1>
@@ -43,7 +43,7 @@
 
       <div class="col-md-8">
         <div class="login" style="position:relative;margin:50px auto;text-align:center">
-          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
+          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:#F5F5F5;"></i>
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black);margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">guide</h1>
@@ -73,7 +73,7 @@
 
       <div class="col-md-8">
         <div class="login" style="position:relative;margin:50px auto;text-align:center">
-          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
+          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:#F5F5F5;"></i>
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black);margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">Terms & Confitions</h1>
@@ -106,7 +106,7 @@
 
       <div class="col-md-8">
         <div class="login" style="position:relative;margin:50px auto;text-align:center">
-          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
+          <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:#F5F5F5;"></i>
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black;margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">Frequently Asked Questions</h1>
@@ -180,7 +180,7 @@
         <div class="login">
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
                             <form class="#" style="width:70%" id="contact-from" method="post" style="text-align:center" style="position:relative">
-                              <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:white;"></i>
+                              <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:#F5F5F5;"></i>
                               <h1 style="color:black);margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">contact us
                           </h1>  <p style="font-size: 17px;
 font-weight: normal;
@@ -231,6 +231,7 @@ color: #626571;">Have any questions or suggestion? We'd love to hear from you.
     </div>
   </div>
 </div>
+
 <footer class="footer px-sm-4" id="footer"  style="background-image:url(<?php echo $images ?>footerbg.png);margin-top:70px;padding-bottom:40px">
   <div class="container">
     <div class="row">
