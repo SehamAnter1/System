@@ -9,6 +9,11 @@
         margin-top: auto;
     }
 }
+@media screen and (max-width: 991px) {
+    .referral_header .points {
+        height: 8vh;
+    }
+}
 @media screen and (max-width: 769px) {
     .dashboard_container {
         position: relative !important;
@@ -238,6 +243,7 @@
     /* login,registeration, and forget password forms */
     .login-page form {
         border-top-left-radius: 0;
+        min-height: auto;
     }
     .login-page form .close_form {
         right: 30px;
@@ -311,20 +317,20 @@
     }
 }
 
-
 /*  store */
 
 @media (min-width: 601px) {
-.dashboard_container .dash-content .store_board{
-    display: grid;
-    grid-template-columns: repeat(2,1fr)!important;
-    margin: auto;
-}
+    .dashboard_container .dash-content .store_board {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important;
+        margin: auto;
+    }
 }
 @media (max-width: 600px) {
-    .dashboard_container .dash-content .store_board{
+    .dashboard_container .dash-content .store_board {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         margin: auto;
     }
 }
+ 

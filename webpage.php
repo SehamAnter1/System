@@ -231,7 +231,7 @@ if (isset($_SESSION['clientid'])) {
 
             <?php
 
-            if ($co['ed'] > $today) {
+            if ($co['ed'] > $today || TRUE) {
 
               // get user hits
               $stmt = $conn->prepare("SELECT  DISTINCT userid FROM hits WHERE created >= ?  AND created <= ?");
@@ -498,7 +498,7 @@ if (isset($_SESSION['clientid'])) {
     }
 
   ?>
-    <div class="content dash-content ptszone rewards" style="margin-bottom:720px">
+    <div class="content dash-content ptszone rewards" >
       <div class="dashboard lf-pd" id="dashboard">
         <div class="container">
           <div class="row">
@@ -540,10 +540,27 @@ if (isset($_SESSION['clientid'])) {
               }
             ?>
               <div class="col-md-12">
-                <div class="cnt-header" style="box-shadow: 0px 10px 10px rgba(0,0,0,.1);margin: 15px 0;  background: #F5F5F5;padding:60px 20px;color:white">
+                <div class="cnt-header shadow" >
+       <div class="content-s" >
+                        <span style="color:white"><?php echo $rd['points'] ?> point</span> <br>
+                        <?php
+                        if ($count >= $rd['clicks']) {
+                        ?>
+                          <small style="font-size:17px;color:red !important;font-weight:bold"><?php echo $rd['clicks'] ?> / <?php echo $rd['clicks'] ?></small>
 
+                        <?php
+                        }
+                        if ($count < $rd['clicks']) {
+                        ?>
+                          <small style="font-size:17px"><?php echo $count ?> / <?php echo $rd['clicks'] ?></small>
+
+                        <?php
+                        }
+                        ?>
+                      </div>
+               
                   <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-8">
                       <?php
                       if ($count >= $rd['clicks']) {
                         $stmt = $conn->prepare("SELECT * FROM ar WHERE user = ? AND ad = ? AND created  =?");
@@ -564,27 +581,12 @@ if (isset($_SESSION['clientid'])) {
                       <?php
                       }
                       ?>
-                      <h3 style="text-transform:capitalize;font-weight:bold;color:black"><?php echo $rd['title'] ?></h3>
-                      <p style="color:black"><?php echo $rd['description'] ?></p>
+                      <h3 style="text-transform:capitalize;font-weight:600;color:#25262E"><?php echo $rd['title'] ?>Get daily 50 Points points!
+</h3>
+                      <p style="color:#626571"><?php echo $rd['description'] ?> You have not done enough clicks today to get points. you have to do at least 40 click (this refers to all social types) to get points.
+ </p>
                     </div>
-                    <div class="col-md-3">
-                      <div class="content-s" style="margin-top: -60px;text-align: center;background:var(--mainColor);color:black;font-weight:bold;padding:62px 0px;padding-bottom:10px;font-size:27px">
-                        <span style="color:white"><?php echo $rd['points'] ?> point</span> <br>
-                        <?php
-                        if ($count >= $rd['clicks']) {
-                        ?>
-                          <small style="font-size:13px;color:red !important;font-weight:bold"><?php echo $rd['clicks'] ?> / <?php echo $rd['clicks'] ?></small>
-
-                        <?php
-                        }
-                        if ($count < $rd['clicks']) {
-                        ?>
-                          <small style="font-size:13px"><?php echo $count ?> / <?php echo $rd['clicks'] ?></small>
-
-                        <?php
-                        }
-                        ?>
-                      </div>
+                    <div class="col-4">
                     </div>
                   </div>
 
@@ -592,15 +594,75 @@ if (isset($_SESSION['clientid'])) {
               </div>
               <div class="col-md-12">
                 <a href="#">
-                  <img src="<?php echo $images ?>bannerad.png" style="width:100%" alt="ad">
+                  <img src="<?php echo $images ?>bannerad.png" style="    width: 60%;
+    margin: auto;
+    display: flex;" alt="ad">
+                </a>
+              </div>
+                    <div class="col-md-12">
+                <div class="cnt-header shadow" >
+       <div class="content-s" >
+                        <span style="color:white"><?php echo $rd['points'] ?> point</span> <br>
+                        <?php
+                        if ($count >= $rd['clicks']) {
+                        ?>
+                          <small style="font-size:17px;color:red !important;font-weight:bold"><?php echo $rd['clicks'] ?> / <?php echo $rd['clicks'] ?></small>
+
+                        <?php
+                        }
+                        if ($count < $rd['clicks']) {
+                        ?>
+                          <small style="font-size:17px;color:red;"><?php echo $count ?> / <?php echo $rd['clicks'] ?></small>
+
+                        <?php
+                        }
+                        ?>
+                      </div>
+               
+                  <div class="row">
+                    <div class="col-8">
+                      <?php
+                      if ($count >= $rd['clicks']) {
+                        $stmt = $conn->prepare("SELECT * FROM ar WHERE user = ? AND ad = ? AND created  =?");
+                        $stmt->execute(array($_SESSION["clientid"], $rd['id'], $date));
+                        $checkg = $stmt->rowCount();
+
+                        if ($checkg == 0) {
+                      ?>
+                          <a ad="<?php echo $rd['id'] ?>" points="<?php echo $rd['points'] ?>" class="getrewardpoints" style="cursor: pointer;text-transform:capitalize;color:black;text-decoration:underline">click to get points</a>
+
+                        <?php
+                        } else {
+                        ?>
+                          <p style="color:green;text-transform:capitalize;font-weight:bold">Congratulations, you won <?php echo $rd['points'] ?> point for this reward</p>
+                        <?php
+                        }
+                        ?>
+                      <?php
+                      }
+                      ?>
+                      <h3 style="text-transform:capitalize;font-weight:600;color:#25262E"><?php echo $rd['title'] ?>Referral Clicks
+
+</h3>
+                      <p style="color:#626571"><?php echo $rd['description'] ?> You have not done enough clicks today to get points. you have to do at least 40 click (this refers to all social types) to get points.
+ </p>
+                    </div>
+                    <div class="col-4">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md-12">
+                <a href="#">
+                  <img src="<?php echo $images ?>bannerad.png" style="    width: 60%;
+    margin: auto;
+    display: flex;" alt="ad">
                 </a>
               </div>
             <?php
             }
             ?>
-
-
-
           </div>
         </div>
       </div>
@@ -624,11 +686,6 @@ if (isset($_SESSION['clientid'])) {
 
     $codeone = mt_rand(1, $total);
     $codetwo = mt_rand(1, $total);
-
-
-
-
-
   ?>
     <?php
     $stmt = $conn->prepare("SELECT * FROM hits WHERE userid = ? ORDER BY id DESC LIMIT 1");
@@ -640,16 +697,11 @@ if (isset($_SESSION['clientid'])) {
 
       $todayhits = $hits['id'];
     }
-
-
-
-
-
     ?>
-    <div class="content dashboard_container col-10 dash-content ptszone rewards">
+    <div class="content dashboard_container col-md-10 col-12 dash-content ptszone rewards">
       <div class="dashboard lf-pd" id="dashboard">
-        <div class="container">
-          <div class="row">
+        <div>
+          <div class="row w-100 m-auto">
             <?php
             if ($checkhi > 0) {
             ?>
@@ -685,15 +737,15 @@ if (isset($_SESSION['clientid'])) {
             }
             ?>
             <div class="col-md-12">
-              <div class="cnt-header" style="box-shadow: 0px 10px 10px rgba(0,0,0,.1);margin: 0px 0;  background: #F5F5F5;padding:60px 20px;color:white">
+              <div class="cnt-header m-0 shadow referral_header p-4">
 
-                <div class="row">
-                  <div class="col-md-9">
-                    <h1 style="text-transform:capitalize;font-weight:bold;color:black">Refer friends and earn points</h1>
-                    <p style="color:black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                <div class="row justify-content-between">
+                  <div class="col-lg-8 col-12">
+                    <h2 class="text-capitalize mb-3">Refer friends and earn points</h2>
+                    <p>Introduce a friend to wild & loud to earn 200 point.<br>Earn on every click your refer does. even when they buy from our store.</p>
                   </div>
-                  <div class="col-md-3">
-                    <span style="background:var(--mainColor);color:black;font-weight:bold;padding:62px 20px;font-size:27px">200 points</span>
+                  <div class="col-lg-3 col-12 points mt-lg-0 mt-3  d-flex flex-column justify-content-center align-items-center text-center">
+                    <span>200 points</span>
                   </div>
                 </div>
 
@@ -701,17 +753,17 @@ if (isset($_SESSION['clientid'])) {
             </div>
 
             <div class="col-md-12">
-              <div class="cnt-header" style="box-shadow: 0px 10px 10px rgba(0,0,0,.1);margin: 20px 0;  background: #F5F5F5;padding:60px 20px;color:white">
+              <div class="cnt-header shadow my-4 p-4">
 
                 <div class="row">
                   <div class="col-md-12">
 
-                    <h3 style="margin: 15px ;text-transform:capitalize;font-weight:bold;color:black">share my referral link with my friends</h3>
+                    <h3 class="text-capitalize mb-3">share my referral link with my friends</h3>
 
                     <div class="input-group mb-3">
                       <input type="text" value="http://localhost/system/index.php?ref=<?php echo  $user['myref'] ?>" class="form-control" placeholder="referral link" id="myInput" aria-label="Recipient's username" aria-describedby="basic-addon2">
                       <div class="input-group-append">
-                        <button onclick="myFunction()" class="btn " style="background:var(--mainColor)" type="button">copy</button>
+                        <button onclick="myFunction()" class="btn " type="button">copy link</button>
                       </div>
                     </div>
                   </div>
@@ -736,20 +788,21 @@ if (isset($_SESSION['clientid'])) {
                 </script>
                 <div class="social">
                   <div class="vconte">
-                    <ul style="display:flex;width:20%;margin:auto">
-                      <li style="width:100%;text-align:center;">
-                        <a href="www.facebook.com" target="_blank">
-                          <img src="<?php echo $images ?>fb.png" style="width:50px" alt="">
+                    <ul class="d-flex justify-content-center mt-3" style="gap: 20px;">
+                      <li>
+                        <a href="https://www.twitter.com" target="_blank">
+                          <img src="<?php echo $images ?>twt.png" alt="twitter" style="width:50px" class="img-fluid">
                         </a>
                       </li>
-                      <li style="width:100%;text-align:center;">
-                        <a href="www.facebook.com" target="_blank">
-                          <img src="<?php echo $images ?>twt.png" style="width:50px" alt="">
+
+                      <li class="text-center">
+                        <a href="https://www.pinterest.com/" target="_blank">
+                          <img src="<?php echo $images ?>pt.png" alt="pinterest" style="width:50px" class="img-fluid">
                         </a>
                       </li>
-                      <li style="width:100%;text-align:center;">
-                        <a href="www.facebook.com" target="_blank">
-                          <img src="<?php echo $images ?>fb.png" style="width:50px" alt="">
+                      <li>
+                        <a href="https://www.facebook.com" target="_blank">
+                          <img src="<?php echo $images ?>fb.png" alt="facebook" style="width:50px" class="img-fluid">
                         </a>
                       </li>
                     </ul>
@@ -771,22 +824,23 @@ if (isset($_SESSION['clientid'])) {
 
 
             ?>
-            <div class="col-md-12" style="">
-              <div class="fd " style="  background: #F5F5F5;padding:40px !important;box-shadow: 0px 10px 10px rgba(0,0,0,.1);">
-                <img src="<?php echo $images ?>mm.png" style="width:100%" alt="">
+            <div class="col-md-12 my-3 shadow banner px-md-5 px-3">
+              <div class="fd ">
+                <img src="<?php echo $images ?>mm.png" style="width:100%" alt="banner">
               </div>
-              <div class="fd" style="padding:40px 0;text-align:center;background:#F5F5F5;">
-                <h3 style="color:rgba(0,0,0,.6)">BANNER IMAGE CODE</h3>
-                <input style="margin-bottom: 60px;width:650px;border-radius: 10px;margin:auto;height:51px" type="text" name="" class="form-control" placeholder="<a href='https://wildnloud.com/lips.datafilhref='https://wildnloud.com/lips.datafil">
-                <a href="#" style="font-size:25px; background:#18efad;border-radius:5px;padding:15px 130px !important;color:white;line-height:5em">Copy</a>
+              <div class="fd banner_text text-center d-flex flex-column justify-content-center align-items-center">
+                <h5 style="color:#626571" class="my-3">BANNER IMAGE CODE</h5>
+                <input type="text" name="" class="form-control" placeholder="<a href='https://wildnloud.com/lips.datafilhref='https://wildnloud.com/lips.datafil">
+                <a href="#" class="d-flex flex-column justify-content-center mt-3 mb-2">Copy</a>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="management-body dash-table">
-                <div class="default-management-table">
-                  <table class="table" id="users-table">
+            <div class="col-md-12 referral_table my-3">
+              <h3>Your Referral</h3>
+              <div class="management-body dash-table ">
+                <div class="default-management-table table-responsive">
+                  <table class="table  " id="users-table">
                     <thead>
-                      <tr style="background:#f1f1f1">
+                      <tr style="background:#FCFCFC">
                         <th scope="col">#</th>
                         <th scope="col">came from</th>
                         <th scope="col">name</th>
@@ -805,7 +859,7 @@ if (isset($_SESSION['clientid'])) {
                         <?php
                         foreach ($users as $ad) {
                         ?>
-                          <tr style="  background: #F5F5F5;margin:20px 0;border-bottom:3px solid rgba(0,0,0,.3)">
+                          <tr style="  background:#F5F5F5;margin:20px 0;filter: drop-shadow(-3px 3px 3px rgba(0,0,0,0.16 ));">
                             <td>
                               <?php echo $ad['id'] ?>
                             </td>
@@ -886,8 +940,6 @@ if (isset($_SESSION['clientid'])) {
                               } else {
                                 echo 'no avg yet';
                               }
-
-
                               ?>
 
                             </td>
@@ -936,6 +988,7 @@ if (isset($_SESSION['clientid'])) {
                     </tbody>
                   </table>
                 </div>
+
               </div>
             </div>
 
@@ -966,7 +1019,7 @@ if (isset($_SESSION['clientid'])) {
   ?>
     <div class="dashboard_container col-10">
 
-      <div class="content dash-content ptszone" style=" ">
+      <div class="content dash-content ptszone">
         <div class="dashboard lf-pd" id="dashboard">
           <div class="container">
             <div class="row  store_board">
@@ -980,15 +1033,15 @@ if (isset($_SESSION['clientid'])) {
                 if ($option['type'] == '0') {
               ?>
 
-                  <div class="">
+                  <div class="BOX">
                     <a href="paymentSelect.php?page=ad&id=<?php echo $option['id'] ?>">
 
                       <div class="cashbox ds " style="padding:15px;  background: #F5F5F5;margin:10px 0;border:1px solid rgba(0,0,0,.2)">
                         <div class="row">
-                          <div class="col-md-4">
-                            <img src="<?php echo $images ?>gold1.png" style="width:100%" alt="">
+                          <div class="">
+                            <img src="<?php echo $images ?>gold1.png" style="" alt="">
                           </div>
-                          <div class="col-md-8">
+                          <div class="">
                             <div class="today-total" style="text-align:left;padding:0 !important">
                               <h3 style="color:rgba(0,0,0,.6);font-size:23px;">$<?php echo $option['moneyd'] ?> cashout</h3>
                               <p style="color:var(--mainColor);font-size:14px"><?php echo $option['points'] ?> point</p>
@@ -1010,14 +1063,14 @@ if (isset($_SESSION['clientid'])) {
 
                 if ($option['type'] == '1') {
               ?>
-                  <div class="">
+                  <div class="BOX">
                     <a href="paymentSelect.php?page=ad&id=<?php echo $option['id'] ?>">
                       <div class="cashbox ds " style="padding:15px;  background: #F5F5F5;margin:10px 0">
                         <div class="row">
-                          <div class="col-md-4">
-                            <img src="<?php echo $images ?>out.png" style="width:100%" alt="">
+                          <div class="">
+                            <img src="<?php echo $images ?>out.png" style="" alt="">
                           </div>
-                          <div class="col-md-8">
+                          <div class="">
                             <div class="today-total" style="text-align:left;padding:0 !important">
                               <h3 style="color:rgba(0,0,0,.6);font-size:23px;">$<?php echo $option['points'] ?> point</h3>
                               <p style="color:#FE4C4C;font-size:14px"><?php echo $option['moneyd'] ?> cash out</p>
@@ -1046,7 +1099,7 @@ if (isset($_SESSION['clientid'])) {
               </div>
             </div>
           </div>
-          <section class="mpprre87 paymentmethod" style="">
+          <section class="mpprre87 paymentmethod">
             <div class="container">
               <div class="row" style="background:#F5F5F5;">
                 <div class="col-md-9">
@@ -1070,7 +1123,7 @@ if (isset($_SESSION['clientid'])) {
 
                     <div class="col-md-4">
 
-                      <div class="paytpye" style=";  background: #F5F5F5;padding:14px;text-align:center;font-size:18px">
+                      <div class="paytpye" style=" background: #F5F5F5;padding:14px;text-align:center;font-size:18px">
                         <a class="dssad" href="paymentSelect.php?page=subs" style="color:var(--mainColor);font-size:30px;padding:10px 20px;font-weight:bold">
                           Premium
                         </a>
@@ -1116,7 +1169,7 @@ if (isset($_SESSION['clientid'])) {
                           </li>
                         </ul>
                       </div>
-                      <div class="conrte" style="">
+                      <div class="conrte">
                         <a href="#" style="display: block;background-color:var(--mainColor);color:white;font-size:30px;padding:10px 50px;font-weight:bold;border-radius:5px">
                           Pay $45
                         </a>

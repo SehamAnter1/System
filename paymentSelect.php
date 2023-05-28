@@ -246,10 +246,16 @@ ob_start();
 
 
           ?>
-          <section class="subs col-10" style="background:#F5F5F5; ">
+          <section class="subs mx-auto py-3 col-10" style="background:#F5F5F5; ">
+            <p style="font-size: 17px;
+font-weight: normal;
+text-align: center;
+color: #626571;font-weight: 500;
+">Choose the right plan for you
+              </p>
             <div class="container">
               <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-xl-6">
 
                   <div class="content" id="lfdf6df5" style="margin-left:0">
                     <ul>
@@ -292,7 +298,7 @@ ob_start();
                     </ul>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-xl-6">
                   <div class="lsit">
                     <ul>
                       <li  style="background:var(--mainColor)" >
@@ -341,16 +347,15 @@ ob_start();
                     </ul>
                   </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="ds" style="border-radius: 5px;text-align:center;padding:20px 20px;box-shadow: 10px 10px 10px rgba(0,0,0,.1);    border: 1px solid rgba(0,0,0,.1);">
-                        <a href="#" style="font-size:22px;text-transform:uppercase;color:rgba(0,0,0,.6)    ">cancel</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="ds" style="border-radius: 5px;background:var(--mainColor);text-align:center;padding:20px 20px">
-                        <a href="#" style="color:white;font-size:22px;text-transform:uppercase">submit</a>
-                    </div>
-                </div>
+
+                    
+            <div class="plan_btn py-2 shadow mx-1 col-md-3 ds form-group row d-flex justify-content-center align-items-center" style="background:#f5f5f5;">
+                <input type="submit" id="cancel" name="" value="cancel" class="btn" style="text-align:center !important;border:none !important">
+           </div>
+             <div class="plan_btn py-2 shadow mx-1 col-md-3 ds form-group row d-flex justify-content-center align-items-center"style="background:var(--mainColor)">
+                <input type="submit" id="submit" name="" value="submit" class="btn " style="text-align:center !important;color:white;border:none !important">
+           </div>
+ 
               </div>
             </div>
           </section>

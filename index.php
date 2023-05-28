@@ -36,257 +36,257 @@ if (isset($_SESSION['clientid'])) {
 
   </div>
 
-    <!-- start dashboard main contnent -->
-    <div class="dashboard_container col-10" id="dashboard">
-        <div class="row dashboard_header  align-items-center justify-content-between">
-          <div class="content d-flex align-items-center justify-content-center">
-            <div class="icon">
-            <img src="<?php echo $images ?>click.png" alt="">
-            </div>
-            <div class="details">
-                  <p> total hits</p>
-
-                  <span class="nbr"><?php echo $user['hits']; ?></span>
-                </div>
-          </div>
-          <div class="content d-flex align-items-center justify-content-center">
-                <div class="icon users-icon">
-                  <img src="<?php echo $images ?>place.png" alt="">
-
-                </div>
-                <div class="details">
-                  <a href="webpage.php?page=comp">
-                    <p> your place</p>
-                  </a>
-                  <span class="nbr"><?php echo $me; ?></span>
-                </div>
-          </div>
-          <div class="content d-flex align-items-center justify-content-center">
-                <div class="icon users-icon">
-                  <img src="<?php echo $images ?>ad.png" alt="">
-
-                </div>
-                <div class="details">
-                  <p> click credit</p>
-                  <span class="nbr"><?php echo Total($conn, 'players') ?></span>
-                </div>
-          </div>
+  <!-- start dashboard main contnent -->
+  <div class="dashboard_container col-10" id="dashboard">
+    <div class="row dashboard_header  align-items-center justify-content-between">
+      <div class="content d-flex align-items-center justify-content-center">
+        <div class="icon">
+          <img src="<?php echo $images ?>click.png" alt="">
         </div>
-        <!-- start form -->
-        <div class="row">
-            <div class="col-12 form_header mt-5 mb-4">
-              <span class="dashboard-overview">Your submit</span>
-            </div>
-            <div class="col-12">
-                <form method="POST" id="adform">
-                    <div class="msg mb-4"></div>
-                    <div class="row justify-content-center ">
-                        <div class="col-xl-5 col-12">
-                            <div class="form-group d-flex">
-                              <label for="colFormLabelSm" class="text-capitalize col-3 px-0">type</label>
-                              <?php
-                                  $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
-                                  $stmt->execute();
-                                  $services = $stmt->fetchAll();
-                                  ?>
-                                  <select class="form-control col-9" name="service" id="service">
-                                    <?php
-                                    foreach ($services as $service) {
-                                    ?>
-                                      <option value="<?php echo $service['id'] ?>"><?php echo $service['name'] ?></option>
+        <div class="details">
+          <p> total hits</p>
 
-                                    <?php
-                                    }
-                                    ?>
-                                    <option value="99">Free points</option>
-
-                                  </select>
-                            </div>
-
-                            <div class="form-group d-flex">
-                              <label for="colFormLabelSm" class="text-capitalize col-3 px-0 ">service type</label>
-                              <?php
-                                  $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
-                                  $stmt->execute();
-                                  $services = $stmt->fetchAll();
-                                  ?>
-                                  <select class="form-control  col-9" name="servicetype" id="servicetype">
-                                    <option value="default">select service type first</option>
-                                  </select>
-                            </div>
-                            <div class="form-group d-flex">
-                                <label for="colFormLabelSm" class="text-capitalize col-3 px-0">total click</label>
-                                <div class="input-group  col-9 px-0">
-                                        <input type="text" id="mpr" name="tclicks" class="form-control" placeholder="Total clicks" aria-label="Total clicks" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                          <a id="on" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">on</a>
-                                          <a id="off" class="btn btn-outline-secondary" style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">off</a>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-12 ">
-                              <div class="form-group d-flex">
-                                  <label for="colFormLabelSm" class=" col-3 px-0">points</label>
-                                  <div class="col-9 px-0 ">
-                                    <input type="text" name="points" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Points">
-                                  </div>
-                              </div>
-
-                                <div class="form-group d-flex">
-                                  <label for="colFormLabelSm" class="col-3 px-0">url / account</label>
-                                  <div class=" col-9 px-0" >
-                                    <input type="text" name="uacc" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Your account url">
-                                  </div>
-                                </div>
-                            
-                                <div class="form-group d-flex">
-                                    <label for="colFormLabelSm" class=" col-3 px-0">Daily Clicks</label>
-                                    <div class="input-group col-9 px-0">
-                                        <input type="text" id="mpr2" name="dclicks" class="form-control" placeholder="Daily Clicks" aria-label="Daily Clicks" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                          <a id="on2" class="btn "  type="button">on</a>
-                                          <a id="off2" class="btn "  type="btutton">off</a>
-                                        </div>
-                                    </div>
-                          
-                                </div>
-                        </div>
-                      <div class="submit_container ">
-                            <input type="button" class="btn btn-primary form-submit text-center" id="mbeadbtn99003f3svb" value="submit">
-                      </div>
-                    </div>
-                </form>
-            </div>
+          <span class="nbr"><?php echo $user['hits']; ?></span>
         </div>
-        <!-- end form -->
-        <!-- start table -->
-        <?php
-        $stmt = $conn->prepare("SELECT * FROM ads WHERE userid = ?");
-        $stmt->execute(array($_SESSION['clientid']));
-        $ads = $stmt->fetchAll();
-        ?>
-         <div class="col-md-12">
-          <div class="management-body dash-table">
-            <div class="default-management-table table-responsive">
-              <table class="table" id="users-table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">social</th>
-                    <th scope="col">link</th>
-                    <th scope="col"> points</th>
-                    <th scope="col">hits</th>
-                    <th scope="col">stats</th>
-                    <th scope="col">action</th>
+      </div>
+      <div class="content d-flex align-items-center justify-content-center">
+        <div class="icon users-icon">
+          <img src="<?php echo $images ?>place.png" alt="">
 
+        </div>
+        <div class="details">
+          <a href="webpage.php?page=comp">
+            <p> your place</p>
+          </a>
+          <span class="nbr"><?php echo $me; ?></span>
+        </div>
+      </div>
+      <div class="content d-flex align-items-center justify-content-center">
+        <div class="icon users-icon">
+          <img src="<?php echo $images ?>ad.png" alt="">
 
-                  </tr>
-                </thead>
-                <tbody>
+        </div>
+        <div class="details">
+          <p> click credit</p>
+          <span class="nbr"><?php echo Total($conn, 'players') ?></span>
+        </div>
+      </div>
+    </div>
+    <!-- start form -->
+    <div class="row">
+      <div class="col-12 form_header mt-5 mb-4">
+        <span class="dashboard-overview">Your submit</span>
+      </div>
+      <div class="col-12">
+        <form method="POST" id="adform">
+          <div class="msg mb-4"></div>
+          <div class="row justify-content-center ">
+            <div class="col-xl-5 col-12">
+              <div class="form-group d-flex flex-wrap">
+                <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0">type</label>
+                <?php
+                $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
+                $stmt->execute();
+                $services = $stmt->fetchAll();
+                ?>
+                <select class="form-control col-12 col-md-9" name="service" id="service">
                   <?php
-                  foreach ($ads as $ad) {
+                  foreach ($services as $service) {
                   ?>
-                    <tr style="background:#F5F5F5;margin:20px 0">
-                      <td>
-                        <?php echo $ad['id'] ?>
-                      </td>
-                      <?php
+                    <option value="<?php echo $service['id'] ?>"><?php echo $service['name'] ?></option>
 
-                      $stmt = $conn->prepare("SELECT * FROM services WHERE id = ?");
-                      $stmt->execute(array($ad['service']));
-                      $sv = $stmt->fetch();
-                      ?>
-                      <td>
-                        <p> <img src="<?php echo $images . $sv['image'] ?>" alt="icon" style="width:20px;height:20px">
-                          <?php echo $sv['name'] ?></p>
-                      </td>
-                      <td>
-                        <a href="<?php echo $ad['link'] ?>" style="font-size:14px;color:rgba(0,0,0,.6)">view</a>
-                      </td>
-                      <td>
-                        <?php
-                        if ($ad['tclicks'] == 'default') {
-                        ?>
-                          <p> <?php echo $ad['points'] ?> / Unlimted</p>
-                        <?php
-                        } else {
-                        ?>
+                  <?php
+                  }
+                  ?>
+                  <option value="99">Free points</option>
 
-                        <?php
-                        }
-                        ?>
+                </select>
+              </div>
 
-                      </td>
-                      <?php
-                      $stmt = $conn->prepare("SELECT * FROM hits WHERE ad  = ?");
+              <div class="form-group d-flex flex-wrap">
+                <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0 ">service type</label>
+                <?php
+                $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
+                $stmt->execute();
+                $services = $stmt->fetchAll();
+                ?>
+                <select class="form-control  col-12 col-md-9" name="servicetype" id="servicetype">
+                  <option value="default">select service type first</option>
+                </select>
+              </div>
+              <div class="form-group d-flex flex-wrap">
+                <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0">total click</label>
+                <div class="input-group  col-12 col-md-9 px-0">
+                  <input type="text" id="mpr" name="tclicks" class="form-control" placeholder="Total clicks" aria-label="Total clicks" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <a id="on" class="btn " style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">on</a>
+                    <a id="off" class="btn " style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">off</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-5 col-12 ">
+              <div class="form-group d-flex flex-wrap">
+                <label for="colFormLabelSm" class=" col-12 col-md-3 px-0">points</label>
+                <div class="col-12 col-md-9 px-0 ">
+                  <input type="text" name="points" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Points">
+                </div>
+              </div>
+
+              <div class="form-group d-flex flex-wrap">
+                <label for="colFormLabelSm" class="col-12 col-md-3 px-0">url / account</label>
+                <div class=" col-12 col-md-9 px-0">
+                  <input type="text" name="uacc" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Your account url">
+                </div>
+              </div>
+
+              <div class="form-group d-flex flex-wrap">
+                <label for="colFormLabelSm" class=" col-12 col-md-3 px-0">Daily Clicks</label>
+                <div class="input-group col-12 col-md-9 px-0">
+                  <input type="text" id="mpr2" name="dclicks" class="form-control" placeholder="Daily Clicks" aria-label="Daily Clicks" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <a id="on2" class="btn " type="button">on</a>
+                    <a id="off2" class="btn " type="btutton">off</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="submit_container ">
+              <input type="button" class="btn btn-primary form-submit text-center" id="mbeadbtn99003f3svb" value="submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end form -->
+    <!-- start table -->
+    <?php
+    $stmt = $conn->prepare("SELECT * FROM ads WHERE userid = ?");
+    $stmt->execute(array($_SESSION['clientid']));
+    $ads = $stmt->fetchAll();
+    ?>
+    <div class="col-md-12">
+      <div class="management-body dash-table">
+        <div class="default-management-table table-responsive">
+          <table class="table" id="users-table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">social</th>
+                <th scope="col">link</th>
+                <th scope="col"> points</th>
+                <th scope="col">hits</th>
+                <th scope="col">stats</th>
+                <th scope="col">action</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              foreach ($ads as $ad) {
+              ?>
+                <tr style="background:#F5F5F5;margin:20px 0">
+                  <td>
+                    <?php echo $ad['id'] ?>
+                  </td>
+                  <?php
+
+                  $stmt = $conn->prepare("SELECT * FROM services WHERE id = ?");
+                  $stmt->execute(array($ad['service']));
+                  $sv = $stmt->fetch();
+                  ?>
+                  <td>
+                    <p> <img src="<?php echo $images . $sv['image'] ?>" alt="icon" style="width:20px;height:20px">
+                      <?php echo $sv['name'] ?></p>
+                  </td>
+                  <td>
+                    <a href="<?php echo $ad['link'] ?>" style="font-size:14px;color:rgba(0,0,0,.6)">view</a>
+                  </td>
+                  <td>
+                    <?php
+                    if ($ad['tclicks'] == 'default') {
+                    ?>
+                      <p> <?php echo $ad['points'] ?> / Unlimted</p>
+                    <?php
+                    } else {
+                    ?>
+
+                    <?php
+                    }
+                    ?>
+
+                  </td>
+                  <?php
+                  $stmt = $conn->prepare("SELECT * FROM hits WHERE ad  = ?");
+                  $stmt->execute(array($ad['id']));
+                  $tt = $stmt->rowCount();
+
+                  if ($ad['dclicks'] == 'default') {
+                  ?>
+                    <td>
+                      <p><?php echo $ad['dclicks'] ?> </p>
+                    </td>
+                    <?php
+                  } else {
+                    if ($tt >= $ad['dclicks']) {
+                      $stmt = $conn->prepare("UPDATE ads SET visibility = 0 WHERE id = ?");
                       $stmt->execute(array($ad['id']));
-                      $tt = $stmt->rowCount();
-
-                      if ($ad['dclicks'] == 'default') {
-                      ?>
-                        <td>
-                          <p><?php echo $ad['dclicks'] ?> </p>
-                        </td>
-                        <?php
-                      } else {
-                        if ($tt >= $ad['dclicks']) {
-                          $stmt = $conn->prepare("UPDATE ads SET visibility = 0 WHERE id = ?");
-                          $stmt->execute(array($ad['id']));
-                        ?>
-                          <td>
-                            <p><?php echo $tt ?>/<?php echo $ad['dclicks'] ?></p>
-                          </td>
-                        <?php
-                        } else {
-                        ?>
-                          <td>
-                            <p><?php echo $tt ?>/ Unlimted</p>
-                          </td>
-                        <?php
-                        }
-                        ?>
-
-                      <?php
-                      }
-                      ?>
-
-
-                      <td class="ds99d">
-                        <?php
-                        if ($ad['status'] == 1) {
-                          echo 'ON';
-                        } else {
-                          echo 'OFF';
-                        }
-                        ?>
-                      </td>
-
+                    ?>
                       <td>
-                        <a style="font-size:13px;color:green;cursor:pointer" class="fas fa-edit ad-edit" ad=<?php echo $ad['id'] ?>></a>
-                        <a style="font-size:13px;color:red;cursor:pointer;margin: 0px 15px !important" class="ad-delete fas fa-trash" ad=<?php echo $ad['id'] ?>></a>
-                        <a style="font-size:13px;color:orange;cursor:pointer" class="visible_update fas fa-eye" ad=<?php echo $ad['id'] ?> status="<?php echo $ad['status'] ?>"></a>
+                        <p><?php echo $tt ?>/<?php echo $ad['dclicks'] ?></p>
                       </td>
+                    <?php
+                    } else {
+                    ?>
+                      <td>
+                        <p><?php echo $tt ?>/ Unlimted</p>
+                      </td>
+                    <?php
+                    }
+                    ?>
 
-                    </tr>
                   <?php
                   }
                   ?>
 
 
+                  <td class="ds99d">
+                    <?php
+                    if ($ad['status'] == 1) {
+                      echo 'ON';
+                    } else {
+                      echo 'OFF';
+                    }
+                    ?>
+                  </td>
 
-                  <?php
+                  <td>
+                    <a style="font-size:13px;color:green;cursor:pointer" class="fas fa-edit ad-edit" ad=<?php echo $ad['id'] ?>></a>
+                    <a style="font-size:13px;color:red;cursor:pointer;margin: 0px 15px !important" class="ad-delete fas fa-trash" ad=<?php echo $ad['id'] ?>></a>
+                    <a style="font-size:13px;color:orange;cursor:pointer" class="visible_update fas fa-eye" ad=<?php echo $ad['id'] ?> status="<?php echo $ad['status'] ?>"></a>
+                  </td>
 
-                  ?>
+                </tr>
+              <?php
+              }
+              ?>
 
-                </tbody>
-              </table>
-            </div>
-          </div>
+
+
+              <?php
+
+              ?>
+
+            </tbody>
+          </table>
         </div>
-        <!-- end table -->
+      </div>
     </div>
-    <!-- end dashboard main contnent -->
+    <!-- end table -->
+  </div>
+  <!-- end dashboard main contnent -->
 
   </div>
 
@@ -308,12 +308,12 @@ if (isset($_SESSION['clientid'])) {
 
 ?>
 
-    <!-- ======================== start forget Password section  ======================== -->
+  <!-- ======================== start forget Password section  ======================== -->
 
-    <div class="register-page login-page" id="fpasswordpage" style="display:none">
+  <div class="register-page login-page" id="fpasswordpage" style="display:none">
     <div class="container mt-5 mt-md-0">
       <div class="row justify-content-center">
-        <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post"  id="sforgotpasspage" >
+        <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post" id="sforgotpasspage">
 
           <i class="fas fa-times close close_form" id="close"></i>
 
@@ -330,17 +330,17 @@ if (isset($_SESSION['clientid'])) {
 
 
           <div class="form-group text-center mt-4">
-            <input  type="button" class="btn btn-primary"  value="confirm" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
+            <input type="button" class="btn btn-primary" value="confirm" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
 
           </div>
 
 
         </form>
-       
+
         <div class="col-lg-5 col-md-6 col-11 px-0 form_picture order-1 order-md-2" style="background-image:url(<?php echo $images ?>accountpage.png)">
-          <div class="img" >
+          <div class="img">
             <div class="d">
-            <h2>hello, back</h2>
+              <h2>hello, back</h2>
               <p>To keep connected with us please login with your personel info </p>
               <a style="cursor:pointer" id="swtichtologin">sign in</a>
             </div>
@@ -354,41 +354,42 @@ if (isset($_SESSION['clientid'])) {
   <!-- ======================== start registeration section  ======================== -->
   <div class="register-page login-page" id="registerpage" style="display:none;">
     <div class="container mt-5 mt-md-0">
+
       <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture" style="background-image:url(<?php echo $images ?>g.png);">
-          <div class="img" >
+        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture position-relative" style="background-image:url(<?php echo $images ?>g.png);">
+          <i class="fas fa-times close register_close position-absolute " id="close"></i>
+          <div class="img">
             <div class="d">
               <h2>hello, back</h2>
               <p>to keep connected with us please login with your personel info </p>
-              <a style="cursor:pointer" id="signToRegister">sign in</a> 
+              <a style="cursor:pointer" id="signToRegister">sign in</a>
             </div>
           </div>
         </div>
 
-          <form class="# py-5 px-4 col-lg-5 col-md-6 col-11 px-0 form_right" action="" method="post" style="text-align:center;width:90%" id="registerform" >
-            <i class="fas fa-times close close_form" id="close" ></i>
+        <form class="# py-5 px-4 col-lg-5 col-md-6 col-11 px-0 form_right" action="" method="post" style="text-align:center;width:90%" id="registerform">
+
+          <h2 style="color:black;margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">create account</h2>
+          <div class="err-msg"></div>
+          <div class="form-group bt-mg">
+            <input id="ffname" type="tewt" name="fname" class="form-control col-md-12 pl-3" placeholder="name " autocomplete="new-password" required="required">
+          </div>
+          <div class="form-group">
+            <input id="femail" type="text" name="email" class="form-control col-md-12 pl-3" placeholder="Email adress" required="required">
+          </div>
+          <div class="form-group bt-mg" style="margin-bottom:20px">
+            <input id="ffphone" type="text" name="phone" class="form-control col-md-12 pl-3" placeholder="phone " autocomplete="new-password" required="required">
+          </div>
+
+          <input type="hidden" name="comref" class="form-control col-md-12" value="<?php echo $ref ?>" autocomplete="new-password" required="required">
 
 
-            <h2 style="color:black);margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">create  account</h2>
-            <div class="err-msg"></div>
-            <div class="form-group bt-mg">
-              <input id="ffname" type="tewt" name="fname" class="form-control col-md-12 pl-3" placeholder="name " autocomplete="new-password" required="required">
-            </div>
-            <div class="form-group">
-              <input id="femail" type="text" name="email" class="form-control col-md-12 pl-3" placeholder="Email adress" required="required">
-            </div>
-            <div class="form-group bt-mg" style="margin-bottom:20px">
-              <input id="ffphone" type="text" name="phone" class="form-control col-md-12 pl-3" placeholder="phone " autocomplete="new-password" required="required">
-            </div>
+          <div class="form-group">
 
-            <input type="hidden" name="comref" class="form-control col-md-12" value="<?php echo $ref ?>" autocomplete="new-password" required="required">
+            <input onclick="validateform()" id="registerbtn" type="button" class="btn btn-primary" value="register" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
+          </div>
+        </form>
 
-
-            <div class="form-group">
-              <input onclick="validateform()" id="registerbtn" type="button" class="btn btn-primary"  value="register" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
-            </div>
-          </form>
-      
 
       </div>
     </div>
@@ -398,63 +399,60 @@ if (isset($_SESSION['clientid'])) {
   <div class="login-page  " id="signinpage" style="display:none;">
     <div class="container mt-5 mt-md-0">
       <div class="row justify-content-center">
-              <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post" style="text-align:center;" id="loginform" >
-                <i class="fas fa-times close close_form" id="close" ></i>
+        <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post" style="text-align:center;" id="loginform">
+          <i class="fas fa-times close close_form" id="close"></i>
 
-                <h2 style="color:black;font-weight: bold;text-transform: capitalize;margin:40px 0">sign in</h2>
-                <div class="form-group">
-                <div class="err-msg">
+          <h2 style="color:black;font-weight: bold;text-transform: capitalize;margin:40px 0">sign in</h2>
+          <div class="form-group">
+            <div class="err-msg">
 
-                </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="form-group">
-                <input type="text" name="email" class="form-control col-md-12 pl-3" placeholder="Email adress" required="required">
-                </div>
-                <div class="form-group bt-mg">
-                <input type="password" name="password" class="form-control col-md-12 pl-3" placeholder="Authenticator code " autocomplete="new-password" required="required">
-                </div>
-                <div class="new-acc" style="margin-bottom:10px">
-                <a id="forget-p" class="new-acc" style="cursor: pointer;color:rgba(0,0,0,.6);text-transform:capitalize;font-size:14px">forget your password</a>
-                </div>
-                <div class="form-group">
-                <input type="button" class="btn btn-primary"  id="login_botton" value="sign in" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
+          <div class="form-group">
+            <input type="text" name="email" class="form-control col-md-12 pl-3" placeholder="Email adress" required="required">
+          </div>
+          <div class="form-group bt-mg">
+            <input type="password" name="password" class="form-control col-md-12 pl-3" placeholder="Authenticator code " autocomplete="new-password" required="required">
+          </div>
+          <div class="new-acc" style="margin-bottom:10px">
+            <a id="forget-p" class="new-acc" style="cursor: pointer;color:rgba(0,0,0,.6);text-transform:capitalize;font-size:14px">forget your password</a>
+          </div>
+          <div class="form-group">
+            <input type="button" class="btn btn-primary" id="login_botton" value="sign in" style="border:none;width:60%;text-align:center !important;text-transform:uppercase;margin:auto !important">
 
-                </div>
-                <?php
-                    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-                    {
-                    $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-                    $password = sha1($_POST['password']);
+          </div>
+          <?php
+          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+            $password = sha1($_POST['password']);
 
-                    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1 ");
-                    $stmt->execute(array($email,$password));
-                    $clientExist = $stmt->rowCount();
-                    $client = $stmt->fetch();
-                    if ($clientExist > 0)
-                    {
-                    $_SESSION['client'] = $client['username'];
-                    $_SESSION['clientid'] = $client['id'];
-                    $_SESSION['email'] = $client['email'];
+            $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1 ");
+            $stmt->execute(array($email, $password));
+            $clientExist = $stmt->rowCount();
+            $client = $stmt->fetch();
+            if ($clientExist > 0) {
+              $_SESSION['client'] = $client['username'];
+              $_SESSION['clientid'] = $client['id'];
+              $_SESSION['email'] = $client['email'];
 
 
-                    header('location: index.php');
-                    }else {
-                    ?>
-                    <div class="alert alert-danger">
-                    Email or password are wrong
-                    </div>
-                <?php
-                }
+              header('location: index.php');
+            } else {
+          ?>
+              <div class="alert alert-danger">
+                Email or password are wrong
+              </div>
+          <?php
+            }
+          }
+          ?>
 
-                }
-                ?>
+        </form>
 
-            </form>
-          
-        
+
         <div class="col-lg-5 col-md-6 col-11 px-0 form_picture order-1 order-md-2 " style="background-image:url(<?php echo $images ?>accountpage.png)">
-          <div class="img"  >
+          <div class="img">
             <div class="d">
               <h2>hello friend</h2>
               <p>Enter your personel details and start journey with us</p>
@@ -466,7 +464,7 @@ if (isset($_SESSION['clientid'])) {
     </div>
   </div>
   <!-- ======================== end signin page  ======================== -->
-    <!-- ============================ home page without login ======================== -->
+  <!-- ============================ home page without login ======================== -->
   <section class="homepage home__page" id="homepage" style="background-image: url(<?php echo $images ?>bg.png);background-size:contain;background-repeat:no-repeat;object-fit:cover;padding-bottom:180px">
     <div class="container-fluid ">
       <div class="row">
@@ -509,11 +507,11 @@ if (isset($_SESSION['clientid'])) {
     </div>
   </section>
   <section class="services">
-    <div class="container">          
+    <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <div class="hd shadow" style="">
-            <h2 >what de we provide</h2>
+          <div class="hd shadow">
+            <h2>what de we provide</h2>
           </div>
         </div>
         <div class="col-md-12">
@@ -636,39 +634,39 @@ if (isset($_SESSION['clientid'])) {
             </div>
           </div>
         </div>
-     
+
       </div>
-     </div>
-      <div class="journey py-5"  style="background-image:url(<?php echo $images ?>bg2.png);background-size:cover">
-        <div class="row py-5 justify-content-center">
-          <div class="col-md-6 mx-auto">              
-           <div class="hd mx-auto px-5 shadow" style="width: fit-content;">
-           <h2>our journey</h2>
+    </div>
+    <div class="journey py-5" style="background-image:url(<?php echo $images ?>bg2.png);background-size:cover">
+      <div class="row py-5 justify-content-center">
+        <div class="col-md-6 mx-auto">
+          <div class="hd mx-auto px-5 shadow" style="width: fit-content;">
+            <h2>our journey</h2>
           </div>
-          </div>
-          <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
 
+        </div>
+        <br><br>
+        <div class="serv_boxes px-sm-4 mx-auto align-items-center d-md-flex  col-md-12">
+          <div class="tel">
+            <p>12.15454</p>
+            <h3>user actitvity</h3>
           </div>
-          <br><br>
-          <div class="serv_boxes px-sm-4 mx-auto align-items-center d-md-flex  col-md-12">
-            <div class="tel">
-              <p>12.15454</p>
-              <h3>user actitvity</h3>
+          <div class="tel">
+            <p>12.15454</p>
+            <h3>user actitvity</h3>
           </div>
-            <div class="tel">
-              <p>12.15454</p>
-              <h3>user actitvity</h3>
-            </div>
 
-            <div class="tel">
-              <p>12.15454</p>
-              <h3>user actitvity</h3>
-          </div>
+          <div class="tel">
+            <p>12.15454</p>
+            <h3>user actitvity</h3>
           </div>
         </div>
       </div>
-    </section>
-    
+    </div>
+  </section>
+
 <?php
   include $tpl . 'footer.php';
 }
