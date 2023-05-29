@@ -23,7 +23,7 @@ if (isset($_SESSION['clientid'])) {
 
     </div>
 
-    <div class="content dash-content ptszone" style="margin-bottom:500px">
+    <div class="content dash-content ptszone" >
       <div class="dashboard lf-pd" id="dashboard">
         <div class="container">
           <div class="row">
@@ -36,7 +36,7 @@ if (isset($_SESSION['clientid'])) {
             </div>
             <div class="col-md-4">
               <div class="content-header">
-                <a class="dashboard-overview webhists" social="2">web hits</a>
+                <a class="dashboard-overview webhists" social="2">ads</a>
               </div>
             </div>
             <div class="col-md-4">
@@ -90,25 +90,8 @@ if (isset($_SESSION['clientid'])) {
                 $stmt = $conn->prepare("SELECT * FROM ads WHERE service = ? AND  status = 1");
                 $stmt->execute(array($idw['id']));
                 $ads = $stmt->fetchAll();
-
-
-                ?>
-                <div class="row">
-                  <?php
-                  foreach ($ads as $ad) {
-                  ?>
-                    <div class="col-md-4">
-                      <div class="today-total fd" style="text-align:left;padding: 20px 0;">
-                        <a target="_blank" href="preview.php?page=viewsite&id=<?php echo $ad['id'] ?>" style="color:black;background:unset">
-                          <h4 style="margin:0">tiel here</h4>
-                          <p style="color:rgba(0,0,0,.6);font-weight:bold;padding-bottom:20px; font-size:13px;border-bottom:2px solid var(--mainColor)">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, m.</p>
-                          <span style="font-weight:bold;color:rgba(0,0,0,.6);margin-top:10px;display:block;text-align:center"><?php echo $ad['points'] ?> point</span>
-                        </a>
-                      </div>
-                    </div>
-                    <?php
-                  }
-                  $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+//  
+  $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
                   $stmt->execute(array($_SESSION['clientid']));
                   $s = $stmt->fetch();
                   if ($s['subs'] == 0) {
@@ -127,22 +110,38 @@ if (isset($_SESSION['clientid'])) {
                   $stmt4 = $conn->prepare("SELECT * FROM freepoints  ORDER BY id DESC LIMIT $lt");
                   $stmt4->execute();
                   $sd = $stmt4->fetchAll();
+                ?>
+                  <?php
+                  foreach ($ads as $ad) {
+                  ?>
+                  <div class="shadow my-3">
+                    <div class="col-md-12 ">
 
-
-
-                  foreach ($sd as $ad) {
+                      <div class="today-total fd" style="text-align:left;padding: 20px 0;">
+                        <a target="_blank" href="preview.php?page=viewsite&id=<?php echo $ad['id'] ?>" style="color:black;background:unset">
+                          <h2 class="py-4" style="color: #626571;">Article Headline Go On...…………..
+</h2>
+                          <p style="color:rgba(0,0,0,.6);font-weight:bold;padding-bottom:20px; font-size:13px;color:#707070;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+</p>
+                          <!-- <span style="font-weight:bold;color:rgba(0,0,0,.6);margin-top:10px;display:block;text-align:center"><?php echo $ad['points'] ?> point</span> -->
+                        </a>
+                      </div>
+                    </div>
+                   
+               <div class="row webhit_bottom_section">
+                <div class="col-12 col-md-6 col-lg-7 text-center text-md-left my-4  my-md-0" style="color: #626571;"><h2>Site_Name</h2></div>
+                   <?php                
                     $d = date('Y-m-d');
                     $stmt11 = $conn->prepare("SELECT * FROM lc  WHERE adid = ? AND userid = ? AND created = ?");
                     $stmt11->execute(array($ad['id'], $_SESSION['clientid'], $d));
                     $cc = $stmt11->rowCount();
+
                     if ($cc ==  '0') {
                     ?>
-                      <div class="col-md-4 fd99fd">
-                        <div class="box-bfd main-ad" ad="<?php echo $ad['id'] ?>" style="cursor:pointer;min-height:195px;">
+                      <div class="col-12 col-md-6 col-lg-5 p-0 fd99fd">
+                        <div class="box-bfd main-ad" ad="<?php echo $ad['id'] ?>" style="cursor:pointer;">
                           <h2 class="mpprlotk" ad="<?php echo $ad['id'] ?>">Lucky Loot</h2>
-                          <a ad="<?php echo $ad['id'] ?>" href="<?php echo $ad['url'] ?>" target="_blank" target="_blank" class="mpprlotk mpprlotk srtcount adh999bb07es" adshow adspce>
-
-                          </a>
+                          <!-- <a ad="<?php echo $ad['id'] ?>" href="<?php echo $ad['url'] ?>" target="_blank" class="mpprlotk mpprlotk srtcount adh999bb07es" adshow adspce></a> -->
 
                           <span class="pointsforad mpprlotk" ad="<?php echo $ad['id'] ?>"><?php echo $ad['points'] ?> </span>
                           <p style="color:white">The more ads you view the more chances you get</p>
@@ -151,25 +150,26 @@ if (isset($_SESSION['clientid'])) {
                     <?php
                     } else {
                     ?>
-                      <div class="col-md-4">
+                      <div class="col-12 col-md-6 col-lg-5 p-0">
                         <div class="box-bfd main-ad" ad="<?php echo $ad['id'] ?>" style=";background:grey;min-height:195px">
                           <h3 class="mpprlotk" ad="<?php echo $ad['id'] ?>">Closed Lucky Loot</h3>
-                          <a ad="<?php echo $ad['id'] ?>" target="_blank" target="_blank" class="" adshow adspce>
+                          <!-- <a ad="<?php echo $ad['id'] ?>" target="_blank"  class="" adshow adspce>
 
-                          </a>
+                          </a> -->
 
                           <p style="color:white">The more ads you view the more chances you get</p>
                         </div>
                       </div>
+
                   <?php
                     }
+                    ?>
+                    </div>
+                    </div>
+                    <?php
                   }
-
-
                   ?>
 
-
-                </div>
               </div>
             </div>
 
@@ -498,7 +498,7 @@ if (isset($_SESSION['clientid'])) {
     }
 
   ?>
-    <div class="content dash-content ptszone rewards" >
+    <div class="content dash-content ptszone rewards">
       <div class="dashboard lf-pd" id="dashboard">
         <div class="container">
           <div class="row">
@@ -540,25 +540,25 @@ if (isset($_SESSION['clientid'])) {
               }
             ?>
               <div class="col-md-12">
-                <div class="cnt-header shadow" >
-       <div class="content-s" >
-                        <span style="color:white"><?php echo $rd['points'] ?> point</span> <br>
-                        <?php
-                        if ($count >= $rd['clicks']) {
-                        ?>
-                          <small style="font-size:17px;color:red !important;font-weight:bold"><?php echo $rd['clicks'] ?> / <?php echo $rd['clicks'] ?></small>
+                <div class="cnt-header shadow">
+                  <div class="content-s">
+                    <span style="color:white"><?php echo $rd['points'] ?> point</span> <br>
+                    <?php
+                    if ($count >= $rd['clicks']) {
+                    ?>
+                      <small style="font-size:17px;color:red !important;font-weight:bold"><?php echo $rd['clicks'] ?> / <?php echo $rd['clicks'] ?></small>
 
-                        <?php
-                        }
-                        if ($count < $rd['clicks']) {
-                        ?>
-                          <small style="font-size:17px"><?php echo $count ?> / <?php echo $rd['clicks'] ?></small>
+                    <?php
+                    }
+                    if ($count < $rd['clicks']) {
+                    ?>
+                      <small style="font-size:17px"><?php echo $count ?> / <?php echo $rd['clicks'] ?></small>
 
-                        <?php
-                        }
-                        ?>
-                      </div>
-               
+                    <?php
+                    }
+                    ?>
+                  </div>
+
                   <div class="row">
                     <div class="col-8">
                       <?php
@@ -582,9 +582,9 @@ if (isset($_SESSION['clientid'])) {
                       }
                       ?>
                       <h3 style="text-transform:capitalize;font-weight:600;color:#25262E"><?php echo $rd['title'] ?>Get daily 50 Points points!
-</h3>
+                      </h3>
                       <p style="color:#626571"><?php echo $rd['description'] ?> You have not done enough clicks today to get points. you have to do at least 40 click (this refers to all social types) to get points.
- </p>
+                      </p>
                     </div>
                     <div class="col-4">
                     </div>
@@ -599,26 +599,26 @@ if (isset($_SESSION['clientid'])) {
     display: flex;" alt="ad">
                 </a>
               </div>
-                    <div class="col-md-12">
-                <div class="cnt-header shadow" >
-       <div class="content-s" >
-                        <span style="color:white"><?php echo $rd['points'] ?> point</span> <br>
-                        <?php
-                        if ($count >= $rd['clicks']) {
-                        ?>
-                          <small style="font-size:17px;color:red !important;font-weight:bold"><?php echo $rd['clicks'] ?> / <?php echo $rd['clicks'] ?></small>
+              <div class="col-md-12">
+                <div class="cnt-header shadow">
+                  <div class="content-s">
+                    <span style="color:white"><?php echo $rd['points'] ?> point</span> <br>
+                    <?php
+                    if ($count >= $rd['clicks']) {
+                    ?>
+                      <small style="font-size:17px;color:red !important;font-weight:bold"><?php echo $rd['clicks'] ?> / <?php echo $rd['clicks'] ?></small>
 
-                        <?php
-                        }
-                        if ($count < $rd['clicks']) {
-                        ?>
-                          <small style="font-size:17px;color:red;"><?php echo $count ?> / <?php echo $rd['clicks'] ?></small>
+                    <?php
+                    }
+                    if ($count < $rd['clicks']) {
+                    ?>
+                      <small style="font-size:17px;color:red;"><?php echo $count ?> / <?php echo $rd['clicks'] ?></small>
 
-                        <?php
-                        }
-                        ?>
-                      </div>
-               
+                    <?php
+                    }
+                    ?>
+                  </div>
+
                   <div class="row">
                     <div class="col-8">
                       <?php
@@ -643,9 +643,9 @@ if (isset($_SESSION['clientid'])) {
                       ?>
                       <h3 style="text-transform:capitalize;font-weight:600;color:#25262E"><?php echo $rd['title'] ?>Referral Clicks
 
-</h3>
+                      </h3>
                       <p style="color:#626571"><?php echo $rd['description'] ?> You have not done enough clicks today to get points. you have to do at least 40 click (this refers to all social types) to get points.
- </p>
+                      </p>
                     </div>
                     <div class="col-4">
                     </div>
@@ -736,7 +736,7 @@ if (isset($_SESSION['clientid'])) {
             <?php
             }
             ?>
-            <div class="col-md-12">
+            <div class="col-md-12 position-relative">
               <div class="cnt-header m-0 shadow referral_header p-4">
 
                 <div class="row justify-content-between">
@@ -744,7 +744,7 @@ if (isset($_SESSION['clientid'])) {
                     <h2 class="text-capitalize mb-3">Refer friends and earn points</h2>
                     <p>Introduce a friend to wild & loud to earn 200 point.<br>Earn on every click your refer does. even when they buy from our store.</p>
                   </div>
-                  <div class="col-lg-3 col-12 points mt-lg-0 mt-3  d-flex flex-column justify-content-center align-items-center text-center">
+                  <div class="col-lg-3  col-12 points mt-lg-0 mt-3  d-flex flex-column justify-content-center align-items-center text-center">
                     <span>200 points</span>
                   </div>
                 </div>
@@ -1223,15 +1223,10 @@ if (isset($_SESSION['clientid'])) {
     $stmt->execute(array($_SESSION['clientid']));
     $userInfo = $stmt->fetch();
   ?>
-    <div class="edit-page col-10 user-edit-pages deep-page">
+    <div class="edit-page col-md-10 col-12 user-edit-pages deep-page">
       <div class="container">
         <div class="row">
-
-
-          <div class="col-md-2">
-
-          </div>
-          <div class="col-md-8">
+          <div class="col-12 jusitify-content-center">
             <form class="pic" action="webpage.php?page=avatupdate&id=<?php echo $userInfo['id'] ?>" style="text-align:center;padding: 0" method="post" enctype="multipart/form-data">
               <?php
               if (empty($userInfo['image'])) {
@@ -1252,90 +1247,88 @@ if (isset($_SESSION['clientid'])) {
               <input type="submit" name="upload" value="save" class="form-control btn btn-primary shw-btn" id="sb-bt" style="visibility:hidden; margin:0 auto !important">
             </form>
             <div class="use-fl-info">
-              <form method="post" action="webpage.php?page=update" style="padding: 0">
+              <form method="post" class="d-flex flex-column" action="webpage.php?page=update" style="padding: 0">
 
                 <div class="form-row justify-content-center">
 
-                  <div class="col-md-7">
-
-                    <h1 style="padding:15px;display:block;text-align:center;text-transform:capitalize;  background: #F5F5F5;box-shadow: 0px 5px 5px rgba(0,0,0,.1);">Personal Data</h1>
+                  <div class="col-12 settig_heading mb-5 d-flex flex-column align-items-center">
+                    <h1 class="shadow py-2 px-2">Personal Data</h1>
 
                   </div>
 
-                  <div class="form-group col-md-6">
-                    <label for="">username</label>
-                    <input type="text" name="username" class="form-control" required value="<?php echo $userInfo['username'] ?>">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="userNameUpdate" class="text-left text-md-center w-100">username</label>
+                    <input type="text" id="userNameUpdate" name="username" class="form-control" required value="<?php echo $userInfo['username'] ?>">
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="">full name</label>
-                    <input type="text" name="fname" class="form-control" required value="<?php echo $userInfo['fname'] ?>">
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label for="">country</label>
-                    <input type="text" name="country" class="form-control" required value="<?php echo $userInfo['country'] ?>">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="">stats</label>
-                    <input type="text" name="stats" class="form-control" required value="<?php echo $userInfo['stats'] ?>">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="fullNameUpdate" class="text-left text-md-center w-100">full name</label>
+                    <input type="text" id="fullNameUpdate" name="fname" class="form-control" required value="<?php echo $userInfo['fname'] ?>">
                   </div>
 
-
-
-                  <div class="form-group col-md-6">
-                    <label for="">city</label>
-                    <input type="text" name="city" class="form-control" required value="<?php echo $userInfo['city'] ?>">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="counteryUpdate" class="text-left text-md-center w-100">country</label>
+                    <input type="text" id="counteryUpdate" name="country" class="form-control" required value="<?php echo $userInfo['country'] ?>">
+                  </div>
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="statsUpdate" class="text-left text-md-center w-100">stats</label>
+                    <input type="text" id="statsUpdate" name="stats" class="form-control" required value="<?php echo $userInfo['stats'] ?>">
                   </div>
 
 
-                  <div class="form-group col-md-6">
-                    <label for="">adress</label>
-                    <input type="text" name="adress" class="form-control" required value="<?php echo $userInfo['adress'] ?>">
+
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="cityUpdate" class="text-left text-md-center w-100">city</label>
+                    <input type="text" id="cityUpdate" name="city" class="form-control" required value="<?php echo $userInfo['city'] ?>">
                   </div>
-                  <div class="form-group col-md-4">
-                    <label for="">zip</label>
-                    <input type="text" name="zip" class="form-control" required value="<?php echo $userInfo['zip'] ?>">
+
+
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="adressUpdate" class="text-left text-md-center w-100">adress</label>
+                    <input type="text" id="adressUpdate" name="adress" class="form-control" required value="<?php echo $userInfo['adress'] ?>">
+                  </div>
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="zipUpdate" class="text-left text-md-center w-100">zip</label>
+                    <input type="text" id="zipUpdate" name="zip" class="form-control" required value="<?php echo $userInfo['zip'] ?>">
                   </div>
 
 
 
                   <input type="hidden" value="<?php echo $userInfo['id'] ?>" name="id" value="">
-                  <div class="form-group col-md-6">
-                    <label for="">new password </label>
-                    <input type="password" name="password" class="form-control">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="newPasswordUpdate" class="text-left text-md-center w-100">new password </label>
+                    <input type="password" id="newPasswordUpdate" name="password" class="form-control">
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4">confirm new password</label>
-                    <input type="password" name="cpassword" class="form-control">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="confirmNewPassUpdate" class="text-left text-md-center w-100">confirm new password</label>
+                    <input type="password" id="confirmNewPassUpdate" name="cpassword" class="form-control">
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="">birthday date</label>
-                    <input type="datetime-local" name="br" class="form-control" value="<?php echo $userInfo['zip'] ?>">
-                  </div>
-
-
-                  <div class="form-group col-md-6">
-                    <label for="">phone</label>
-                    <input type="text" name="phone" class="form-control" required value="<?php echo $userInfo['phone'] ?>">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="BODUpdate" class="text-left text-md-center w-100">birthday date</label>
+                    <input type="datetime-local" id="BODUpdate" name="br" class="form-control" value="<?php echo $userInfo['zip'] ?>">
                   </div>
 
 
-                  <div class="col-md-7">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="phoneUpdate" class="text-left text-md-center w-100">phone</label>
+                    <input type="text" id="phoneUpdate" name="phone" class="form-control" required value="<?php echo $userInfo['phone'] ?>">
+                  </div>
 
-                    <h1 style="box-shadow: 0px 5px 5px rgba(0,0,0,.1);padding:15px;display:block;text-align:center;text-transform:capitalize;background:#F5F5F5;">Security Data</h1>
+
+                  <div class="col-12 settig_heading mb-5 mt-4 d-flex flex-column align-items-center">
+                    <h1 class="shadow py-2 px-2">Security Data</h1>
 
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="">Current Email</label>
-                    <input type="email" name="cemail" class="form-control" required value="<?php echo $userInfo['email'] ?>">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="emailUpdate" class="text-left text-md-center w-100">Current Email</label>
+                    <input type="email" id="emailUpdate" name="cemail" class="form-control" required value="<?php echo $userInfo['email'] ?>">
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="">new Email</label>
-                    <input type="email" name="nemail" class="form-control" value="">
+                  <div class="form-group col-md-6 mb-md-4">
+                    <label for="newEmailUpdate" class="text-left text-md-center w-100">new Email</label>
+                    <input type="email" id="newEmailUpdate" name="nemail" class="form-control" value="">
                   </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">save</button>
+                <button type="submit" class="btn btn-primary mx-auto">save</button>
               </form>
             </div>
           </div>

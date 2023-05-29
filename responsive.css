@@ -12,6 +12,9 @@
 @media screen and (max-width: 991px) {
     .referral_header .points {
         height: 8vh;
+        position: relative;
+        top: unset;
+        right: unset;
     }
 }
 @media screen and (max-width: 769px) {
@@ -115,6 +118,10 @@
         width: 80px;
     }
     /* end sidebar */
+    /* setting page */
+    .settig_heading h1 {
+        font-size: 22px;
+    }
 }
 @media screen and (max-width: 330px) {
     .sidebar a img {
@@ -333,4 +340,9 @@
         margin: auto;
     }
 }
- 
+/* social */
+@media (max-width: 767px) {
+.box-bfd{
+border-top-right-radius: 5px!important;
+}
+}
