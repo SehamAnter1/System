@@ -37,9 +37,9 @@ if (isset($_SESSION['clientid'])) {
   </div>
 
   <!-- start dashboard main contnent -->
-  <div class="dashboard_container col-10" id="dashboard">
+  <div class="dashboard_container col-12 col-sm-10" id="dashboard">
     <div class="row dashboard_header  align-items-center justify-content-between">
-      <div class="content d-flex align-items-center justify-content-center">
+      <div class="content shadow d-flex align-items-center justify-content-center">
         <div class="icon">
           <img src="<?php echo $images ?>click.png" alt="">
         </div>
@@ -49,7 +49,7 @@ if (isset($_SESSION['clientid'])) {
           <span class="nbr"><?php echo $user['hits']; ?></span>
         </div>
       </div>
-      <div class="content d-flex align-items-center justify-content-center">
+      <div class="content shadow d-flex align-items-center justify-content-center">
         <div class="icon users-icon">
           <img src="<?php echo $images ?>place.png" alt="">
 
@@ -61,7 +61,7 @@ if (isset($_SESSION['clientid'])) {
           <span class="nbr"><?php echo $me; ?></span>
         </div>
       </div>
-      <div class="content d-flex align-items-center justify-content-center">
+      <div class="content shadow d-flex align-items-center justify-content-center">
         <div class="icon users-icon">
           <img src="<?php echo $images ?>ad.png" alt="">
 
@@ -82,7 +82,7 @@ if (isset($_SESSION['clientid'])) {
           <div class="msg mb-4"></div>
           <div class="row justify-content-center ">
             <div class="col-xl-5 col-12">
-              <div class="form-group d-flex flex-wrap">
+              <div class="form-group d-flex flex-wrap" style="align-items: center;">
                 <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0">type</label>
                 <?php
                 $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
@@ -103,8 +103,8 @@ if (isset($_SESSION['clientid'])) {
                 </select>
               </div>
 
-              <div class="form-group d-flex flex-wrap">
-                <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0 ">service type</label>
+              <div class="form-group d-flex flex-wrap"style="align-items: center;">
+                <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0 m-0">service type</label>
                 <?php
                 $stmt = $conn->prepare("SELECT * FROM services  ORDER BY id DESC");
                 $stmt->execute();
@@ -114,35 +114,35 @@ if (isset($_SESSION['clientid'])) {
                   <option value="default">select service type first</option>
                 </select>
               </div>
-              <div class="form-group d-flex flex-wrap">
-                <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0">total click</label>
+              <div class="form-group d-flex flex-wrap"style="align-items: center;">
+                <label for="colFormLabelSm" class="text-capitalize col-12 col-md-3 px-0 m-0">total click</label>
                 <div class="input-group  col-12 col-md-9 px-0">
                   <input type="text" id="mpr" name="tclicks" class="form-control" placeholder="Total clicks" aria-label="Total clicks" aria-describedby="basic-addon2">
-                  <div class="input-group-append">
+                  <!-- <div class="input-group-append">
                     <a id="on" class="btn " style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">on</a>
                     <a id="off" class="btn " style="height:unset !important;border:1px solid rgba(0,0,0,.1);color:white" type="a">off</a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
             <div class="col-xl-5 col-12 ">
-              <div class="form-group d-flex flex-wrap">
-                <label for="colFormLabelSm" class=" col-12 col-md-3 px-0">points</label>
+              <div class="form-group d-flex flex-wrap"style="align-items: center;">
+                <label for="colFormLabelSm" class=" col-12 col-md-3 px-0 m-0">points</label>
                 <div class="col-12 col-md-9 px-0 ">
                   <input type="text" name="points" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Points">
                 </div>
               </div>
 
-              <div class="form-group d-flex flex-wrap">
-                <label for="colFormLabelSm" class="col-12 col-md-3 px-0">url / account</label>
+              <div class="form-group d-flex flex-wrap"style="align-items: center;">
+                <label for="colFormLabelSm" class="col-12 col-md-3 px-0 m-0">url / account</label>
                 <div class=" col-12 col-md-9 px-0">
                   <input type="text" name="uacc" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Your account url">
                 </div>
               </div>
 
-              <div class="form-group d-flex flex-wrap">
-                <label for="colFormLabelSm" class=" col-12 col-md-3 px-0">Daily Clicks</label>
-                <div class="input-group col-12 col-md-9 px-0">
+              <div class="form-group d-flex flex-wrap"style="align-items: center;">
+                <label for="colFormLabelSm" class=" col-12 col-md-3 px-0  m-0">Daily Clicks</label>
+                <div class="input-group col-12 col-md-9 px-0 m-0">
                   <input type="text" id="mpr2" name="dclicks" class="form-control" placeholder="Daily Clicks" aria-label="Daily Clicks" aria-describedby="basic-addon2">
                   <div class="input-group-append">
                     <a id="on2" class="btn " type="button">on</a>
@@ -465,11 +465,11 @@ if (isset($_SESSION['clientid'])) {
   </div>
   <!-- ======================== end signin page  ======================== -->
   <!-- ============================ home page without login ======================== -->
-  <section class="homepage home__page" id="homepage" style="background-image: url(<?php echo $images ?>bg.png);background-size:contain;background-repeat:no-repeat;object-fit:cover;padding-bottom:180px">
+  <section class="homepage home__page position-relative" id="homepage" style="background-image: url(<?php echo $images ?>bg.png);">
     <div class="container-fluid ">
       <div class="row">
         <div class="col-md-12">
-          <div class="tbbar navigation__bar" style="margin-top:40px">
+          <div class="tbbar navigation__bar">
             <nav class="navbar navbar-expand-md px-sm-5" style="z-index: 800;">
               <a class="navbar-brand" href="index.php">
                 <img src="<?php echo $logo . $page['logo'] ?>" style="width:200px" alt="">

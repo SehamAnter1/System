@@ -15,7 +15,7 @@
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black;margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">sitemap</h1>
-          <div class="ds" style="margin: 30px !important;position:relative;overflow:hidden">
+          <div class="ds" style="margin: 30px;position:relative;overflow:hidden">
             <?php echo $page['map'] ?>
           </div>
 
@@ -46,7 +46,7 @@
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black;margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">guide</h1>
-          <div class="ds" style="margin: 30px !important">
+          <div class="ds" style="margin: 30px ">
             <?php echo $page['guide'] ?>
           </div>
 
@@ -76,7 +76,7 @@
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black;margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">Terms & Confitions</h1>
-          <div class="ds" style="margin: 30px !important">
+          <div class="ds" style="margin: 30px ">
             <?php echo $page['tm'] ?>
           </div>
 
@@ -174,12 +174,12 @@
 
       <div class="col-md-8">
         <div class="login">
-          <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
-          <form class="#" style="width:70%" id="contact-from" method="post" style="text-align:center" style="position:relative">
+          <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px;min-height: 165px;" alt="">
+          <form class="#" style="min-height: auto;width:70%;padding: 20px;" id="contact-from" method="post" style="text-align:center" style="position:relative">
             <i class="fas fa-times close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;background:#F5F5F5;"></i>
-            <h1 style="color:black;margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">contact us
+            <h1 style="color:black;font-size:35px;text-transform:capitalize;font-weight:bold">contact us
             </h1>
-            <p style="font-size: 17px;
+            <p style="font-size: 18px;
 font-weight: normal;
 text-align: center;
 color: #626571;">Have any questions or suggestion? We'd love to hear from you.
@@ -188,37 +188,38 @@ color: #626571;">Have any questions or suggestion? We'd love to hear from you.
             <div class="err-msg2">
 
             </div>
-            <div class="form-group row">
-              <label for="colFormLabelSm" class="text-left text-sm-right col-3 col-form-label col-form-label-sm">username</label>
+            <div class="text-left">
+            <div class="form-group  row">
+              <label for="colFormLabelSm" class=" text-left col-3 col-form-label col-form-label-sm">username</label>
               <div class="col-12 col-sm-9">
                 <input type="text" name="username" class="form-control form-control-sm" id="colFormLabelSm" placeholder="username">
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="colFormLabelSm" class="text-left text-sm-right col-3 col-form-label col-form-label-sm">email</label>
+              <label for="colFormLabelSm" class="text-left  col-3 col-form-label col-form-label-sm">email</label>
               <div class="col-12 col-sm-9">
                 <input type="text" name="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="email">
               </div>
             </div>
             <div class="form-group row">
-              <label for="colFormLabelSm" class="text-left text-sm-right col-3 col-form-label col-form-label-sm">title</label>
+              <label for="colFormLabelSm" class="text-left  col-3 col-form-label col-form-label-sm">title</label>
               <div class="col-12 col-sm-9">
                 <input type="text" name="title" class="form-control form-control-sm" id="colFormLabelSm" placeholder="title">
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="colFormLabelSm" class="text-left text-sm-right col-3 col-form-label col-form-label-sm">Message</label>
+              <label for="colFormLabelSm" class="text-left col-3 col-form-label col-form-label-sm">Message</label>
               <div class="col-12 col-sm-9">
                 <textarea name="message" placeholder="Your Comment
 " class="form-control"></textarea>
               </div>
             </div>
-
+          </div>
             <div class="form-group row d-flex justify-content-center align-items-center">
               <div class="">
-                <input type="submit" id="contact-btn" name="" value="submit" class="btn btn-primary" style="text-align:center !important;border:none !important">
+                <input type="submit" id="contact-btn" name="" value="submit" class="btn btn-primary" style="text-align:center ;border:none ;border-radius:5px;">
               </div>
             </div>
           </form>
@@ -240,8 +241,8 @@ color: #626571;">Have any questions or suggestion? We'd love to hear from you.
                 <img src="<?php echo $logo ?>logo.png" style="width:150px" alt="">
               </a>
             </li style="margin-right:15px">
-            <li style="text-align:right !important">
-              <a id="guide" style="text-align:right !important">
+            <li style="text-align:right ">
+              <a id="guide" style="text-align:right ">
                 guide
               </a>
             </li>
