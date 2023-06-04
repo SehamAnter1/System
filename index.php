@@ -144,9 +144,9 @@ if (isset($_SESSION['clientid'])) {
                 <label for="colFormLabelSm" class=" col-12 col-md-3 px-0  m-0">Daily Clicks</label>
                 <div class="input-group col-12 col-md-9 px-0 m-0">
                   <input type="text" id="mpr2" name="dclicks" class="form-control" placeholder="Daily Clicks" aria-label="Daily Clicks" aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <a id="on2" class="btn " type="button">on</a>
-                    <a id="off2" class="btn " type="btutton">off</a>
+                  <div class="input-group-append border-0">
+                    <a id="on2" class="btn border-0" type="button">on</a>
+                    <a id="off2" class="btn border-0" type="btutton">off</a>
                   </div>
                 </div>
 
@@ -470,7 +470,7 @@ if (isset($_SESSION['clientid'])) {
       <div class="row">
         <div class="col-md-12">
           <div class="tbbar navigation__bar">
-            <nav class="navbar navbar-expand-md px-sm-5" style="z-index: 800;">
+            <nav class="navbar navbar-expand-md px-sm-5 d-flex align-items-center" style="z-index: 800;">
               <a class="navbar-brand" href="index.php">
                 <img src="<?php echo $logo . $page['logo'] ?>" style="width:200px" alt="">
               </a>
