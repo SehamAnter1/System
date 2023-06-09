@@ -16,16 +16,16 @@ foreach ($pts as $pt) {
 ?>
 <div class="topbar" id="topbar " style="margin-bottom:40px">
   <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand ">
 
       <a href="index.php" class="navbar-brand logo">
-        <img src="<?php echo $logo . $page['logo'] ?>" style="width:200px;" alt="logo">
+        <img src="<?php echo $logo . $page['logo'] ?>" style="width:160px;" alt="logo">
       </a>
-      <button class="navbar-toggler" style="border: none !important;outline: none !important;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon fas fa-bars" style="display: flex;align-items: center;justify-content: right;color:var(--mainColor);"></span>
-      </button>
+      <!-- <button class="navbar-toggler" style="border: none !important;outline: none !important;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon fas fa-bars d-flex justify-content-center align-items-center" style="color:var(--mainColor);"></span>
+      </button> -->
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-       
+
         <ul class="navbar-nav ml-auto">
 
 

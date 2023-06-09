@@ -1,11 +1,11 @@
 <div class="guidepage contact-page login-page" id="mappage" style="display:none;top:0;position:fixed;overflow:auto">
-  <?php
+    <?php
 
-  $stmt = $conn->prepare("SELECT * FROM pages  WHERE id = 1");
-  $stmt->execute();
-  $page = $stmt->fetch();
+    $stmt = $conn->prepare("SELECT * FROM pages  WHERE id = 1");
+    $stmt->execute();
+    $page = $stmt->fetch();
 
-  ?>
+    ?>
     <i class="fas   close" id="close" style="position:absolute;padding:10px;margin:30px;top:0;left:0;cursor:pointer;"></i>
   <div class="container" style="position: absolute;z-index: 999999999999;width: 60%;padding:0;">
 
@@ -13,7 +13,7 @@
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black;margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">sitemap</h1>
-          <div class="ds" style="margin:0 30px;position:relative;overflow:hidden">
+          <div class="ds" style="position:relative;overflow:hidden">
             <?php echo $page['map'] ?>
           </div>
         </div>
@@ -37,7 +37,7 @@
 
           <img src="<?php echo $images ?>contactbg.png" style="width:100%;height:120px" alt="">
           <h1 style="color:black;margin:27px 0;font-size:25px;text-transform:capitalize;font-weight:bold">guide</h1>
-          <div class="ds" style="margin:0 30px ">
+          <div class="ds" >
             <?php echo $page['guide'] ?>
           </div>
     </div>
@@ -196,53 +196,53 @@ color: #626571;">Have any questions or suggestion? We'd love to hear from you.
   </div>
 </div>
 
-<footer class="footer px-sm-4" id="footer" style="background-image:url(<?php echo $images ?>footerbg.png);margin-top:70px;padding-bottom:40px">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="content">
-          <div class="footer_logo-container d-flex align-items-center justify-content-around">
-            <a class="m-0 logo" href="index.php">
-              <img src="<?php echo $logo ?>logo.png" style="width:150px" alt="logo">
-            </a>
-            <div class="contact d-none">
-              <a id="contactpage-btn-md">
-                contact
-              </a>
+<footer class="footer px-sm-4 w-100 position-absolute " id="footer" style="bottom:0;background-image:url(<?php echo $images ?>footerbg.png);margin-top:70px;padding-bottom:40px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <div class="footer_logo-container d-flex align-items-center justify-content-around">
+                        <a class="m-0 logo" href="index.php">
+                            <img src="<?php echo $logo ?>logo.png" style="width:150px" alt="logo">
+                        </a>
+                        <div class="contact d-none">
+                            <a id="contactpage-btn-md">
+                                contact
+                            </a>
+                        </div>
+                    </div>
+                    <ul>
+                        <li style="text-align:right ">
+                            <a id="guide" style="text-align:right ">
+                                guide
+                            </a>
+                        </li>
+                        <li>
+                            <a id="x">
+                            <!-- <a id="map"> -->
+                                sitemap
+                            </a>
+                        </li>
+                        <li>
+                            <a id="faqpage-btn">
+                                FAQ
+                            </a>
+                        </li>
+                        <li>
+                            <a id="tm">
+                                terms & conditions
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="contact">
+                        <a id="contactpage-btn">
+                            contact
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <ul>
-            <li style="text-align:right ">
-              <a id="guide" style="text-align:right ">
-                guide
-              </a>
-            </li>
-            <li>
-              <!-- <a id="map"> -->
-              <a id="l">
-                sitemap
-              </a>
-            </li>
-            <li>
-              <a id="faqpage-btn">
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a id="tm">
-                terms & conditions
-              </a>
-            </li>
-          </ul>
-          <div class="contact">
-            <a id="contactpage-btn">
-              contact
-            </a>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </footer>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
@@ -254,11 +254,12 @@ color: #626571;">Have any questions or suggestion? We'd love to hear from you.
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo $js ?>progress.js"></script>
 <script type="text/javascript" src="<?php echo $js ?>main.js"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.js"></script>
 <script>
-  AOS.init();
+    AOS.init();
 </script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 

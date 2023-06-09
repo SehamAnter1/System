@@ -310,12 +310,13 @@ if (isset($_SESSION['clientid'])) {
 
   <!-- ======================== start forget Password section  ======================== -->
 
-  <div class="register-page login-page" id="fpasswordpage" style="display:none">
-    <div class="container mt-5 mt-md-0">
+  <div class="register-page login-page" id="fpasswordpage" style="display:none;  ">
+            <i class="fas  close " id="close"></i>
+    <div class="container mt-5 mt-md-0 p-0" style="width:80%;position: absolute;
+    z-index: 999999999999;">
       <div class="row justify-content-center">
-        <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post" id="sforgotpasspage">
+        <form class="# py-5 px-lg-5 px-4 col-lg-6 col-md-6 col-12 px-0 order-md-1 order-2" action="" method="post" id="sforgotpasspage">
 
-          <i class="fas fa-times close close_form" id="close"></i>
 
           <h2 style="color:black;margin:27px 0;font-size:30px;text-transform:capitalize;font-weight:bold">Forgot Password</h2>
           <p class="gray-p">Enter your Email to receive the Authenticator code </p>
@@ -337,7 +338,7 @@ if (isset($_SESSION['clientid'])) {
 
         </form>
 
-        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture order-1 order-md-2" style="background-image:url(<?php echo $images ?>accountpage.png)">
+        <div class="col-lg-6 col-md-6 col-12 px-0 form_picture order-1 order-md-2" style="background-image:url(<?php echo $images ?>accountpage.png)">
           <div class="img">
             <div class="d">
               <h2>hello, back</h2>
@@ -352,12 +353,12 @@ if (isset($_SESSION['clientid'])) {
   <!-- ======================== end forget Password section  ======================== -->
 
   <!-- ======================== start registeration section  ======================== -->
-  <div class="register-page login-page" id="registerpage" style="display:none;">
-    <div class="container mt-5 mt-md-0">
-
+  <div class="register-page login-page" id="registerpage" style="display:none;  ">
+              <i class="fas  close " id="close"></i>
+    <div class="container mt-5 mt-md-0 p-0" style="width:80%;position: absolute;
+    z-index: 999999999999;">
       <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture position-relative" style="background-image:url(<?php echo $images ?>g.png);">
-          <i class="fas fa-times close register_close position-absolute " id="close"></i>
+        <div class="col-lg-6 col-md-6 col-12 px-0 form_picture position-relative" style="background-image:url(<?php echo $images ?>g.png);">
           <div class="img">
             <div class="d">
               <h2>hello, back</h2>
@@ -367,7 +368,7 @@ if (isset($_SESSION['clientid'])) {
           </div>
         </div>
 
-        <form class="# py-5 px-4 col-lg-5 col-md-6 col-11 px-0 form_right" action="" method="post" style="text-align:center;width:90%" id="registerform">
+        <form class="# py-5 px-4 col-lg-6 col-md-6 col-12 px-0 form_right" action="" method="post" style="text-align:center;width:90%" id="registerform">
 
           <h2 style="color:black;margin:27px 0;font-size:35px;text-transform:capitalize;font-weight:bold">create account</h2>
           <div class="err-msg"></div>
@@ -397,10 +398,11 @@ if (isset($_SESSION['clientid'])) {
   <!-- ======================== end registeration page  ======================== -->
   <!-- ======================== start signin page  ======================== -->
   <div class="login-page  " id="signinpage" style="display:none;">
-    <div class="container mt-5 mt-md-0">
+              <i class="fas  close " id="close"></i>
+    <div class="container p-0 mt-5 mt-md-0" style="width:80%;position: absolute;
+    z-index: 999999999999;">
       <div class="row justify-content-center">
-        <form class="# py-5 px-lg-5 px-4 col-lg-5 col-md-6 col-11 px-0 order-md-1 order-2" action="" method="post" style="text-align:center;" id="loginform">
-          <i class="fas fa-times close close_form" id="close"></i>
+        <form class="# py-5 px-lg-5 px-4 col-lg-6 col-md-6 col-12 px-0 order-md-1 order-2" action="" method="post" style="text-align:center;" id="loginform">
 
           <h2 style="color:black;font-weight: bold;text-transform: capitalize;margin:40px 0">sign in</h2>
           <div class="form-group">
@@ -451,7 +453,7 @@ if (isset($_SESSION['clientid'])) {
         </form>
 
 
-        <div class="col-lg-5 col-md-6 col-11 px-0 form_picture order-1 order-md-2 " style="background-image:url(<?php echo $images ?>accountpage.png)">
+        <div class="col-lg-6 col-md-6 col-12 px-0 form_picture order-1 order-md-2 " style="background-image:url(<?php echo $images ?>accountpage.png)">
           <div class="img">
             <div class="d">
               <h2>hello friend</h2>
